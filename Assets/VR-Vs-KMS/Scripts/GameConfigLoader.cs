@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameConfigLoader : MonoBehaviour
 {
     public string AppConfigFilePath;
+    public string SceneToLoadAfterAppConfigLoaded;
 
     public void Awake()
     {
@@ -12,7 +13,10 @@ public class GameConfigLoader : MonoBehaviour
 
         ///////////////////////////// LOAD OTHER SCENE /////////////////////////////
 
-        // Load GameScene with the index 0 in Build Settings --> Scenes In Build
-        SceneManager.LoadScene(0);
+        // Load SceneToLoadAfterAppConfigLoaded
+        if (!string.IsNullOrEmpty(SceneToLoadAfterAppConfigLoaded))
+        {
+            SceneManager.LoadScene(SceneToLoadAfterAppConfigLoaded);
+        }
     }
 }

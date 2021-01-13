@@ -6,11 +6,11 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/VR-Vs-KMS/Scenes/LobbyScene.unity
-    guid: eac99ca93bcfc6a4cb0f37b46587b66f
-  - enabled: 1
     path: Assets/VR-Vs-KMS/Scenes/InitScene.unity
     guid: 17a71badbfac57b4db1a9f337121e317
+  - enabled: 1
+    path: Assets/VR-Vs-KMS/Scenes/LobbyScene.unity
+    guid: eac99ca93bcfc6a4cb0f37b46587b66f
   - enabled: 1
     path: Assets/VR-Vs-KMS/Scenes/GameScene.unity
     guid: 30347d40228ce1a4888f1f7c7e1cd1f6
