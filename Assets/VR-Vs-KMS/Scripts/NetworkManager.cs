@@ -80,7 +80,9 @@ namespace WS3
         {
             Instance = this;
 
-            if (playerPrefabPC == null)
+            GameObject playerPrefabUsed = UserDeviceManager.GetPrefabToSpawnWithDeviceUsed(playerPrefabPC, playerPrefabVR);
+
+            if (playerPrefabUsed == null)
             {
                 Debug.LogError("<Color=Red><a>Missing</a></Color> playerPrefabPC Reference. Please set it up in GameObject 'Game Manager'", this);
             }
@@ -91,7 +93,7 @@ namespace WS3
                 {
                     Debug.LogFormat("We are Instantiating LocalPlayer from {0}", SceneManagerHelper.ActiveSceneName);
                     // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                    PhotonNetwork.Instantiate("Prefabs/" + playerPrefabPC.name, new Vector3(0f, 1f, 0f), Quaternion.identity);
+                    PhotonNetwork.Instantiate("Prefabs/" + playerPrefabUsed.name, new Vector3(0f, 0f, 0f), Quaternion.identity);
                 }
                 else
                 {
