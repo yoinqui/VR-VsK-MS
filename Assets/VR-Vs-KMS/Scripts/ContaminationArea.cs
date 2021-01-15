@@ -34,8 +34,6 @@ namespace vr_vs_kms
         private int PlayersIn = 0;
         private GameObject TeamCatching;
         private GameObject TeamCatch;
-        // private string TeamCatchingName;
-        // private string TeamCatchName;
 
         void Start()
         {
@@ -84,20 +82,16 @@ namespace vr_vs_kms
                 Timer += Time.deltaTime;
                 if (Timer >= GameConfig.Inst.TimeToAreaContamination)
                 {
-                    // TODO -- CHECK IF IS A VR PLAYER OR A KMS PLAYER
-                    DataGame.Inst.UpdateNbAreaContainer(true, TeamCatch != null);
-
-                    /* DataGame.Inst.UpdateNbAreaContainer(TeamCatchingName == "PC", !string.IsNullOrEmpty(TeamCatchName));
-                    if (TeamCatchingName == "PC")
-                    {
+                    // CHECK IF IS A VR PLAYER OR A KMS PLAYER
+                    DataGame.Inst.UpdateNbAreaContainer(TeamCatching.GetComponent<IsScientistPlayer>() != null,
+                      TeamCatch != null);
+                    
+                    // ANIMATION IN FUNCTION OF TEAM PLAYER
+                    if (TeamCatching.GetComponent<IsScientistPlayer>() != null) {
                         BelongsToScientists();
-                    } else
-                    {
+                    } else {
                         BelongsToVirus();
-                    }*/
-
-                    // TODO -- ANIMATION IN FUNCTION OF TEAM PLAYER
-                    BelongsToScientists();
+                    }
 
                     TeamCatch = TeamCatching;
                     PlayersIn = 0;
@@ -140,28 +134,24 @@ namespace vr_vs_kms
         }
 
         private void OnTriggerEnter(Collider coll)
-        {            
-            if (TeamCatch == null || coll.gameObject != TeamCatch) {
+        {
+            if (TeamCatch == null
+                || !(TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.GetComponent<IsScientistPlayer>() != null)
+                || !(TeamCatch.GetComponent<IsVirusPlayer>() != null && coll.gameObject.GetComponent<IsVirusPlayer>() != null)) {
                 TeamCatching = coll.gameObject;
                 PlayersIn += 1;
             }
-
-            /*if (TeamCatchName == null || coll.gameObject. != TeamCatchName)
-            {
-                TeamCatchingName = coll.gameObject.;
-                PlayersIn += 1;
-            }*/
         }
 
         void OnTriggerExit(Collider coll)
         {
-            /*if (TeamCatchName == null || coll.gameObject. != TeamCatchName)
+            if (TeamCatch == null
+                || !(TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.GetComponent<IsScientistPlayer>() != null)
+                || !(TeamCatch.GetComponent<IsVirusPlayer>() != null && coll.gameObject.GetComponent<IsVirusPlayer>() != null))
             {
-                PlayersIn--;
-                PlayersIn = Math.Abs(PlayersIn);
-            }*/
+                PlayersIn --;
+            }
 
-            if (TeamCatch == null || coll.gameObject != TeamCatch) { PlayersIn--; }
             if (PlayersIn == 0) { Timer = 0; }
         }
     }
