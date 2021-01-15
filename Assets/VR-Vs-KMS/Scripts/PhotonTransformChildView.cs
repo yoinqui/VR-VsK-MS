@@ -72,11 +72,12 @@ public class PhotonTransformChildView : MonoBehaviourPunCallbacks, IPunObservabl
     // Start is called before the first frame update
     void Awake()
     {
-        foreach(Transform transform in SynchronizedChildTransform)
+        localPositionList = new List<Vector3>();
+        localRotationList = new List<Quaternion>();
+        localScaleList = new List<Vector3>();
+
+        foreach (Transform transform in SynchronizedChildTransform)
         {
-            localPositionList = new List<Vector3>();
-            localRotationList = new List<Quaternion>();
-            localScaleList = new List<Vector3>();
             localPositionList.Add(transform.localPosition);
             localRotationList.Add(transform.localRotation);
             localScaleList.Add(transform.localScale);
