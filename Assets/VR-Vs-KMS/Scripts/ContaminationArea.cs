@@ -155,18 +155,14 @@ namespace vr_vs_kms
 
         void OnTriggerExit(Collider coll)
         {
-            if (TeamCatch == null || coll.gameObject != TeamCatch) { PlayersIn--; }
-
             /*if (TeamCatchName == null || coll.gameObject. != TeamCatchName)
             {
                 PlayersIn--;
                 PlayersIn = Math.Abs(PlayersIn);
             }*/
 
-            if (PlayersIn == 0)
-            {
-                Timer = 0;
-            }
+            if (TeamCatch == null || coll.gameObject != TeamCatch) { PlayersIn--; }
+            if (PlayersIn == 0) { Timer = 0; }
         }
     }
 }

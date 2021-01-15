@@ -23,6 +23,7 @@ public class DataGame
         }
     }
 
+    // Update AreaContamination taken by players
     public void UpdateNbAreaContainer(bool isKMS, bool swapSides)
     {
         if (isKMS) {
@@ -40,9 +41,12 @@ public class DataGame
         Inst.CheckEndGame();
     }
 
-    public void UpdateNbContaminatedPlayer(GameObject obj)
+    // Update of the number of infected players
+    public void UpdateNbContaminatedPlayer(bool isKMS)
     {
-        // TODO -- IF IS A SCIENTIST OR VIRUS -- SET VALUES
+        // IF IS A SCIENTIST OR VIRUS PLAYER -- SET VALUES
+        if (isKMS) { Inst.NbContaminatedPlayerByVR += 1; }
+        else { Inst.NbContaminatedPlayerByKMS += 1; }
         Inst.CheckEndGame();
     }
 
@@ -52,7 +56,7 @@ public class DataGame
             || Inst.NbContaminatedPlayerByKMS >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbAreaContainerKMS >= 5 || Inst.NbAreaContainerVR >= 5)
         {
-            // TODO -- DISPLAY ENDGAME PANEL
+            // DISPLAY ENDGAME PANEL
             Debug.LogError("Fin de Partie");
             Inst.isKMSVictoryTeam = Inst.NbContaminatedPlayerByKMS >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbAreaContainerKMS >= 5;            
