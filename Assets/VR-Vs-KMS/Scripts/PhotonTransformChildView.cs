@@ -23,29 +23,48 @@ public class PhotonTransformChildView : MonoBehaviourPunCallbacks, IPunObservabl
             foreach (Transform transform in SynchronizedChildTransform)
             {
                 if (SynchronizePosition)
+                {
                     stream.SendNext(transform.localPosition);
+                    Debug.Log("localPositionUpdateSended" + transform.localPosition);
+                }
                 
 
                 if (SynchronizeRotation)
+                {
                     stream.SendNext(transform.localRotation);
+                    Debug.Log("localRotationUpdateSended" + transform.localRotation);
+                }
                 
 
                 if (SynchronizeScale)
+                {
                     stream.SendNext(transform.localScale);
+                    Debug.Log("localScaleUpdateSended" + transform.localScale);
+                }
             }
         }
         else
         {
-            for (int i = 0; i < SynchronizedChildTransform.Count; i++)
+            for (int i = 0; i < SynchronizedChildTransform.Count - 1; i++)
             {
                 if (SynchronizePosition)
+                {
                     localPositionList[i] = (Vector3)stream.ReceiveNext();
+                    Debug.Log("localPositionUpdateReceived" + localPositionList[i]);
+                }
 
                 if (SynchronizeRotation)
+                {
                     localRotationList[i] = (Quaternion)stream.ReceiveNext();
+                    Debug.Log("localRotationUpdateReceived" + localRotationList[i]);
+                }
 
                 if (SynchronizeScale)
+                {
                     localScaleList[i] = (Vector3)stream.ReceiveNext();
+                    Debug.Log("localScaleUpdateReceived" + localScaleList[i]);
+                }
+                    
             }
         }
     }
@@ -69,7 +88,7 @@ public class PhotonTransformChildView : MonoBehaviourPunCallbacks, IPunObservabl
     {
         if (!photonView.IsMine)
         {
-            for (int i = 0; i < SynchronizedChildTransform.Count; i++)
+            for (int i = 0; i < SynchronizedChildTransform.Count - 1; i++)
             {
                 if (SynchronizePosition)
                     SynchronizedChildTransform[i].transform.localPosition = localPositionList[i];

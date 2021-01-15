@@ -57,7 +57,7 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         if (!photonView.IsMine)
         {
             SteamVRLeft.GetComponent<SteamVR_Behaviour_Pose>().enabled = false;
-            
+            SteamVRLeft.GetComponent<ControllerInput>().enabled = false;
         }
 
         // Left SteamVR_RenderModel activation if UserMe, deactivation if UserOther
@@ -81,7 +81,7 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         if (!photonView.IsMine)
         {
             SteamVRRight.GetComponent<SteamVR_Behaviour_Pose>().enabled = false;
-            
+            SteamVRRight.GetComponent<ControllerInput>().enabled = false;
         }
 
         // Right SteamVR_RenderModel activation if UserMe, deactivation if UserOther

@@ -24,8 +24,16 @@ public class ControllerInput : MonoBehaviour
 
     void Awake()
     {
-        pose = GetComponent<SteamVR_Behaviour_Pose>();
-        inputSources = pose.inputSource;
+        try
+        {
+            pose = GetComponent<SteamVR_Behaviour_Pose>();
+            inputSources = pose.inputSource;
+        }
+        catch (System.Exception ex)
+        {
+            Debug.LogWarning("Warning, no Behaviour Pose found\n" + ex);
+        }
+        
     }
     // Start is called before the first frame update
     void Start()
@@ -83,14 +91,7 @@ public class ControllerInput : MonoBehaviour
         {
             TeleportReleased();
         }
-        
-
-
-        //if (SteamVR_Actions.default_GrabPinch.GetStateDown(inputSources))
-        //{
-        //    isGrabbingPinch = true;
-        //    Debug.Log(inputSources + " GrabbingPinch : " + isGrabbingPinch);
-        //}
+       
     }
 
     private void OnTriggerEnter(Collider other)
