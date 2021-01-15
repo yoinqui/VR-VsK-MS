@@ -57,7 +57,7 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         if (!photonView.IsMine)
         {
             SteamVRLeft.GetComponent<SteamVR_Behaviour_Pose>().enabled = false;
-            
+            SteamVRLeft.GetComponent<ControllerInput>().enabled = false;
         }
 
         // Left SteamVR_RenderModel activation if UserMe, deactivation if UserOther
@@ -81,7 +81,7 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         if (!photonView.IsMine)
         {
             SteamVRRight.GetComponent<SteamVR_Behaviour_Pose>().enabled = false;
-            
+            SteamVRRight.GetComponent<ControllerInput>().enabled = false;
         }
 
         // Right SteamVR_RenderModel activation if UserMe, deactivation if UserOther
@@ -105,6 +105,7 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         if (!photonView.IsMine)
         {
             SteamVRCamera.GetComponent<Camera>().enabled = false;
+            SteamVRCamera.GetComponent<AudioListener>().enabled = false;
         }
 
         if (!photonView.IsMine)
@@ -122,9 +123,9 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
             modelRight.transform.parent = SteamVRRight.transform;
 
             // Create the model of the Head for the UserOther
-            var head = Instantiate(UserOtherHeadModel);
+            //var head = Instantiate(UserOtherHeadModel);
             // Put it as a child of the SteamVRRight Game Object
-            head.transform.parent = SteamVRCamera.transform;
+            //head.transform.parent = SteamVRCamera.transform;
         }
     }
 
