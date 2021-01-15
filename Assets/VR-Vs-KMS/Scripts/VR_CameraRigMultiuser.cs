@@ -9,8 +9,9 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
 {
     // reference to SteamController
     public GameObject SteamVRLeft, SteamVRRight, SteamVRCamera;
-    public GameObject UserOtherLeftHandModel, UserOtherRightHandModel;
+    public GameObject UserOtherLeftHandModel, UserOtherRightHandModel, UserOtherHeadModel;
     private GameObject goFreeLookCameraRig;
+
 
     // Use this for initialization
     void Start()
@@ -119,6 +120,11 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
             var modelRight = Instantiate(UserOtherRightHandModel);
             // Put it as a child of the SteamVRRight Game Object
             modelRight.transform.parent = SteamVRRight.transform;
+
+            // Create the model of the Head for the UserOther
+            var head = Instantiate(UserOtherHeadModel);
+            // Put it as a child of the SteamVRRight Game Object
+            head.transform.parent = SteamVRCamera.transform;
         }
     }
 

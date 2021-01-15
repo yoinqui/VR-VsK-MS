@@ -69,7 +69,8 @@ public class ControllerPointer : MonoBehaviour
         Ray raycast = new Ray(transform.position, transform.forward);
 
         RaycastHit hitObject;
-        bool rayHit = Physics.Raycast(raycast, out hitObject);
+        //LayerMask mask = LayerMask.GetMask("Wall");
+        bool rayHit = Physics.Raycast(raycast, out hitObject/*, 20.0f, mask*/);
         if (rayHit)
         {
             if (hitObject.collider.gameObject.GetComponent<TeleportPlane>())

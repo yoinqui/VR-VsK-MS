@@ -4139,6 +4139,11 @@ PrefabInstance:
       propertyPath: cullRadius
       value: 7.86
       objectReference: {fileID: 0}
+    - target: {fileID: 2112096270440660614, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2112096271937188681, guid: 2ec6fba1a40102843b98f3569a9d95fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4198,6 +4203,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ContaminationArea (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112096271937188694, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec6fba1a40102843b98f3569a9d95fa, type: 3}
@@ -4989,6 +4999,11 @@ PrefabInstance:
       propertyPath: cullRadius
       value: 7.86
       objectReference: {fileID: 0}
+    - target: {fileID: 2112096270440660614, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2112096271937188681, guid: 2ec6fba1a40102843b98f3569a9d95fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5048,6 +5063,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ContaminationArea (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112096271937188694, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec6fba1a40102843b98f3569a9d95fa, type: 3}
@@ -6035,6 +6055,11 @@ PrefabInstance:
       propertyPath: cullRadius
       value: 7.86
       objectReference: {fileID: 0}
+    - target: {fileID: 2112096270440660614, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2112096271937188681, guid: 2ec6fba1a40102843b98f3569a9d95fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6099,6 +6124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112096271937188694, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec6fba1a40102843b98f3569a9d95fa, type: 3}
@@ -7295,6 +7325,11 @@ PrefabInstance:
       propertyPath: cullRadius
       value: 7.86
       objectReference: {fileID: 0}
+    - target: {fileID: 2112096270440660614, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2112096271937188681, guid: 2ec6fba1a40102843b98f3569a9d95fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7354,6 +7389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ContaminationArea (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2112096271937188694, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec6fba1a40102843b98f3569a9d95fa, type: 3}
@@ -8320,6 +8360,11 @@ PrefabInstance:
       propertyPath: cullRadius
       value: 7.86
       objectReference: {fileID: 0}
+    - target: {fileID: 2112096270440660614, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2112096271937188681, guid: 2ec6fba1a40102843b98f3569a9d95fa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8380,6 +8425,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ContaminationArea (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2112096271937188694, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ec6fba1a40102843b98f3569a9d95fa, type: 3}
 --- !u!4 &2116810038 stripped
@@ -8406,6 +8456,11 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1268789054723070589, guid: 893d7d88144380a4b9a00aded7c33f0d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5837272303240001897, guid: 893d7d88144380a4b9a00aded7c33f0d,
         type: 3}
       propertyPath: m_Name
@@ -8415,6 +8470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5837272303240001897, guid: 893d7d88144380a4b9a00aded7c33f0d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6610243572468220527, guid: 893d7d88144380a4b9a00aded7c33f0d,
         type: 3}
