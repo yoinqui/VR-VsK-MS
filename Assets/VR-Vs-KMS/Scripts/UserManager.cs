@@ -20,7 +20,6 @@ public class UserManager : MonoBehaviourPunCallbacks
     /// </summary>
     GameObject goFreeLookCameraRig = null;
 
-
     void Awake()
     {
         if (photonView.IsMine)
@@ -42,7 +41,10 @@ public class UserManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-
+        if (photonView.IsMine && Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.LogError("Display Play / Pause Panel");
+        }
     }
 
     /// <summary>

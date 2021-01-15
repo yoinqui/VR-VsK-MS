@@ -30,7 +30,6 @@ public class GameConfig
         {
             jsonString = Path.Combine(Application.streamingAssetsPath, "GameConfig.json");
         }
-        JsonUtility.FromJsonOverwrite(File.ReadAllText(jsonString), Inst);
-        // Debug.LogError("LifeNumber :" + Inst.LifeNumber);        
+        JsonUtility.FromJsonOverwrite(File.ReadAllText(jsonString), Inst);     
     }
 }

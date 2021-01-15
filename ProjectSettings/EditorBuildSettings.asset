@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/VR-Vs-KMS/Scenes/GameScene.unity
     guid: 30347d40228ce1a4888f1f7c7e1cd1f6
+  - enabled: 1
+    path: Assets/VR-Vs-KMS/Scenes/EndGameScene.unity
+    guid: 341f1c8fd674f0647be9a608cc9d4229
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: eddbbc2f1f521bc408cf36e040def14a,
       type: 2}

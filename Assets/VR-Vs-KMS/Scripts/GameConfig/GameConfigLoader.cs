@@ -8,7 +8,6 @@ public class GameConfigLoader : MonoBehaviour
 
     public void Awake()
     {
-        Debug.LogError("InitScene Load !");
         GameConfig.Inst.UpdateValuesFromJSON(AppConfigFilePath);
 
         ///////////////////////////// LOAD OTHER SCENE /////////////////////////////

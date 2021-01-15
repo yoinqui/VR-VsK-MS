@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,6 +29,13 @@ namespace vr_vs_kms
         private int remainingGrenades;
         public float inTimer = 0f;
         private CullingGroup cullGroup;
+
+        private float Timer = 0;
+        private int PlayersIn = 0;
+        private GameObject TeamCatching;
+        private GameObject TeamCatch;
+        // private string TeamCatchingName;
+        // private string TeamCatchName;
 
         void Start()
         {
@@ -69,20 +77,39 @@ namespace vr_vs_kms
             }
         }
 
-        void OnTriggerExit(Collider coll)
-        {
-            
-        }
-
         void Update()
         {
-            
+            if (PlayersIn > 0)
+            {
+                Timer += Time.deltaTime;
+                if (Timer >= GameConfig.Inst.TimeToAreaContamination)
+                {
+                    // TODO -- CHECK IF IS A VR PLAYER OR A KMS PLAYER
+                    DataGame.Inst.UpdateNbAreaContainer(true, TeamCatch != null);
+
+                    /* DataGame.Inst.UpdateNbAreaContainer(TeamCatchingName == "PC", !string.IsNullOrEmpty(TeamCatchName));
+                    if (TeamCatchingName == "PC")
+                    {
+                        BelongsToScientists();
+                    } else
+                    {
+                        BelongsToVirus();
+                    }*/
+
+                    // TODO -- ANIMATION IN FUNCTION OF TEAM PLAYER
+                    BelongsToScientists();
+
+                    TeamCatch = TeamCatching;
+                    PlayersIn = 0;
+                    Timer = 0;
+                }
+            }
         }
 
         private void ColorParticle(ParticleSystem pSys, Color mainColor, Color accentColor)
         {
-            // TODO: Solution to color particle 
-            
+            var main = pSys.main;
+            main.startColor = new ParticleSystem.MinMaxGradient(mainColor, accentColor);
         }
 
         public void BelongsToNobody()
@@ -110,6 +137,36 @@ namespace vr_vs_kms
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, cullRadius);
+        }
+
+        private void OnTriggerEnter(Collider coll)
+        {            
+            if (TeamCatch == null || coll.gameObject != TeamCatch) {
+                TeamCatching = coll.gameObject;
+                PlayersIn += 1;
+            }
+
+            /*if (TeamCatchName == null || coll.gameObject. != TeamCatchName)
+            {
+                TeamCatchingName = coll.gameObject.;
+                PlayersIn += 1;
+            }*/
+        }
+
+        void OnTriggerExit(Collider coll)
+        {
+            if (TeamCatch == null || coll.gameObject != TeamCatch) { PlayersIn--; }
+
+            /*if (TeamCatchName == null || coll.gameObject. != TeamCatchName)
+            {
+                PlayersIn--;
+                PlayersIn = Math.Abs(PlayersIn);
+            }*/
+
+            if (PlayersIn == 0)
+            {
+                Timer = 0;
+            }
         }
     }
 }

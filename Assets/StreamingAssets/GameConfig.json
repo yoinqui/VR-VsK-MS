@@ -4,7 +4,7 @@
   "DelayTeleport": 5000,
   "ColorShotVirus": "#00FF36",
   "ColorShotKMS": "#006CFF",
-  "NbContaminatedPlayerToVictory": 50,
+  "NbContaminatedPlayerToVictory": 10,
   "RadiusExplosion": 2,
-  "TimeToAreaContamination": 60
+  "TimeToAreaContamination": 2
 }
