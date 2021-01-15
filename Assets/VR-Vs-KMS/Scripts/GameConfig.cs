@@ -12,6 +12,7 @@ public class GameConfig
     public int NbContaminatedPlayerToVictory;
     public int RadiusExplosion;
     public int TimeToAreaContamination;
+    public string DeviceUsed;
 
     private static GameConfig inst;
 
