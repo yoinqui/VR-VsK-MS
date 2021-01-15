@@ -45,7 +45,7 @@ public class PhotonTransformChildView : MonoBehaviourPunCallbacks, IPunObservabl
         }
         else
         {
-            for (int i = 0; i < SynchronizedChildTransform.Count - 1; i++)
+            for (int i = 0; i < SynchronizedChildTransform.Count; i++)
             {
                 if (SynchronizePosition)
                 {
@@ -89,7 +89,7 @@ public class PhotonTransformChildView : MonoBehaviourPunCallbacks, IPunObservabl
     {
         if (!photonView.IsMine)
         {
-            for (int i = 0; i < SynchronizedChildTransform.Count - 1; i++)
+            for (int i = 0; i < SynchronizedChildTransform.Count; i++)
             {
                 if (SynchronizePosition)
                     SynchronizedChildTransform[i].transform.localPosition = localPositionList[i];
