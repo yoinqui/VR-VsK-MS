@@ -26,6 +26,7 @@ public class ControllerPointer : MonoBehaviour
     public int gravitationForce = 8;
     [Range(50f, 500f)]
     public float maxDistance = 100f;
+    public float tpCooldownTime = 5.0f;
     
 
     [Header("Interpolation")]
@@ -173,7 +174,7 @@ public class ControllerPointer : MonoBehaviour
     public IEnumerator WaitTeleportReloaded()
     {
         tpAvailable = false;
-        yield return new WaitForSeconds(5.0f);
+        yield return new WaitForSeconds(tpCooldownTime);
         tpAvailable = true;
     }
 }

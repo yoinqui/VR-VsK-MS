@@ -663,6 +663,7 @@ MonoBehaviour:
   raycastType: 1
   gravitationForce: 10
   maxDistance: 500
+  tpCooldownTime: 2
   interpolationType: 3
   interpolationCurve:
     serializedVersion: 2
@@ -881,6 +882,7 @@ MonoBehaviour:
   raycastType: 1
   gravitationForce: 10
   maxDistance: 500
+  tpCooldownTime: 2
   interpolationType: 3
   interpolationCurve:
     serializedVersion: 2
