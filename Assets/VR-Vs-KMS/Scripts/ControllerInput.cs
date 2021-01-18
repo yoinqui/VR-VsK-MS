@@ -11,7 +11,7 @@ public class ControllerInput : MonoBehaviour
     private SteamVR_Behaviour_Pose pose = null;
     private SteamVR_Input_Sources inputSources;
     private GameObject selectedObject;
-    private ControllerPointer pointer;
+    public ControllerPointer pointer;
 
 
     public delegate void OnGrabPressed(GameObject controller);
@@ -38,7 +38,6 @@ public class ControllerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-   
 
     }
 
@@ -139,21 +138,21 @@ public class ControllerInput : MonoBehaviour
 
     private void TeleportPressed()
     {
-        pointer = gameObject.AddComponent<ControllerPointer>();
+        pointer.ActivatePointer();
     }
 
     private void TeleportReleased()
     {
         if (pointer.CanTeleport)
         {
+            StartCoroutine(pointer.WaitTeleportReloaded());
             GameObject cameraRig = GameObject.Find("[CameraRigMultiUser](Clone)");
-            GameObject camera = GameObject.Find("Camera");
-            cameraRig.transform.position = pointer.TargetPosition;
-            camera.transform.position = pointer.TargetPosition;
+            GameObject camera = GameObject.Find("Camera").gameObject;
+            Vector3 positionDifference = camera.transform.position - cameraRig.transform.position;
+            cameraRig.transform.position = pointer.TargetPosition - new Vector3(positionDifference.x, 0, positionDifference.z);
         }
         pointer.DesactivatePointer();
-        Destroy(pointer);
     }
 
-
+    
 }
