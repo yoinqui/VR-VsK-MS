@@ -126,6 +126,7 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
             var head = Instantiate(UserOtherHeadModel);
             // Put it as a child of the SteamVRRight Game Object
             head.transform.parent = SteamVRCamera.transform;
+            head.transform.localScale = new Vector3(2, 2, 2);
         }
     }
 

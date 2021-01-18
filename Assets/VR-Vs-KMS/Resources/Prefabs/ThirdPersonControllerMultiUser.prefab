@@ -1284,6 +1284,7 @@ GameObject:
   - component: {fileID: -5520346927189948483}
   - component: {fileID: 3689411795041996125}
   - component: {fileID: 9023891763733159937}
+  - component: {fileID: 7085390775960533251}
   m_Layer: 0
   m_Name: ThirdPersonControllerMultiUser
   m_TagString: Player
@@ -1495,6 +1496,19 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &7085390775960533251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3691511176967532926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa02757149804194bbf8fa08745946f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHealthPoints: 100
 --- !u!1 &3691511176967533188
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class LifeManager : MonoBehaviour
     public float baseHealthPoints = 100.0f;
     private float healthPoints;
 
-    public delegate void OnDeath(GameObject controller);
+    public delegate void OnDeath(GameObject player);
 
     /// <summary>
     /// The Death event.

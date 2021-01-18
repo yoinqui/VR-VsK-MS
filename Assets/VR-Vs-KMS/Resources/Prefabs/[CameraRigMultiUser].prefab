@@ -188,6 +188,7 @@ GameObject:
   - component: {fileID: 5022431921400283572}
   - component: {fileID: 8773868549281292593}
   - component: {fileID: 8828312338317921111}
+  - component: {fileID: 5071067582476673369}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -283,9 +284,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.3
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: -0.3, z: 0}
 --- !u!114 &8773868549281292593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,6 +318,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5071067582476673369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5943645667096283644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa02757149804194bbf8fa08745946f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseHealthPoints: 100
 --- !u!1 &5944645678598782976
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +363,7 @@ Transform:
   m_GameObject: {fileID: 5944645678598782976}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -24.82, y: 0, z: 10.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_Children:
   - {fileID: 5944645678598995210}
   - {fileID: 5944645678599051734}
