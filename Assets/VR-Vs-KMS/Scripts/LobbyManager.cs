@@ -131,7 +131,7 @@ namespace WS3
                 Debug.Log("Connecting...");
 
                 // UDP port 5055 for local server, 5056 for cloud server
-                JSONLevelLoader.Inst.UpdateValuesFromJSON(mapFileInputField.text);
+                JSONLevel.Inst.UpdateValuesFromJSON(mapFileInputField.text);
 
                 if (!string.IsNullOrWhiteSpace(ipInputField.text) && !string.IsNullOrWhiteSpace(portInputField.text))
                 {
