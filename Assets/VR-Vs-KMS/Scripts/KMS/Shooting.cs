@@ -5,20 +5,19 @@ using UnityEngine;
 using Photon.Realtime;
 
 public class Shooting : MonoBehaviourPunCallbacks
-
 {
-
     public Rigidbody BulletPrefab;
     public float Speed;
-    public GameObject muzzle;
+    private Vector3 origin;
 
     private void Start()
     {
         
     }
 
-    public void shoot()
+    public void Shoot(Vector3 _origin)
     {
+        origin = _origin;
         photonView.RPC("RpcShoot", RpcTarget.All);
     }
 
@@ -26,7 +25,7 @@ public class Shooting : MonoBehaviourPunCallbacks
     [PunRPC]
     void RpcShoot()
     {
-        Rigidbody bulletClone = Instantiate(BulletPrefab, muzzle.transform.position + new Vector3(0,0,0), this.transform.rotation);
+        Rigidbody bulletClone = Instantiate(BulletPrefab, origin + new Vector3(0,0,0), this.transform.rotation);
 
         bulletClone.AddRelativeForce(Vector3.forward * 1000 * Time.deltaTime, ForceMode.Impulse);
     }
@@ -34,11 +33,6 @@ public class Shooting : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && photonView.IsMine)
-        {
-            shoot();
-        }
+        
     }
-
-
 }
