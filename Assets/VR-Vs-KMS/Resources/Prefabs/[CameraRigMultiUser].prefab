@@ -647,6 +647,7 @@ MonoBehaviour:
   teleport:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
+  pointer: {fileID: 7898757986273133429}
 --- !u!114 &7898757986273133429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,6 +865,7 @@ MonoBehaviour:
   teleport:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
+  pointer: {fileID: 4303146662756740900}
 --- !u!114 &4303146662756740900
 MonoBehaviour:
   m_ObjectHideFlags: 0

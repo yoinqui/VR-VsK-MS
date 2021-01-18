@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -50,6 +51,8 @@ public class ControllerPointer : MonoBehaviour
     public Vector3 TargetPosition;
     [HideInInspector]
     public bool CanTeleport;
+
+    private bool tpAvailable = true;
 
     GameObject pointer;
     GameObject cursor;
@@ -115,7 +118,7 @@ public class ControllerPointer : MonoBehaviour
         lineRenderer.SetPositions(curvePoints.ToArray());
         if (output)
         {
-            if (curvedHit.collider.gameObject.GetComponent<TeleportPlane>())
+            if (curvedHit.collider.gameObject.GetComponent<TeleportPlane>() && tpAvailable)
             {
                 CanTeleport = true;
                 TargetPosition = curvedHit.point;
@@ -124,10 +127,18 @@ public class ControllerPointer : MonoBehaviour
                 cursor.transform.position = Vector3.MoveTowards(cursor.transform.position, curvePoints.Last(), 1);
                 cursor.SetActive(true);
             }
+            else if (curvedHit.collider.gameObject.GetComponent<TeleportPlane>() && !tpAvailable)
+            {
+                CanTeleport = false;
+                lineMaterial.color = Color.yellow;
+                cursor.transform.position = curvePoints.Last();
+                cursor.transform.position = Vector3.MoveTowards(cursor.transform.position, curvePoints.Last(), 1);
+                cursor.SetActive(true);
+            }
             else
             {
                 CanTeleport = false;
-                lineMaterial.color = Color.red;
+                lineMaterial.color = tpAvailable ? Color.red : Color.yellow;
                 cursor.SetActive(false);
             }
         }
@@ -147,7 +158,6 @@ public class ControllerPointer : MonoBehaviour
 
         cursor = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         cursor.SetActive(false);
-        //cursor.transform.parent = pointer.transform;
         cursor.GetComponent<MeshRenderer>().material = lineMaterial;
         Destroy(cursor.GetComponent<CapsuleCollider>());
         cursor.transform.localScale = new Vector3((float)0.5, (float)0.02, (float)0.5);
@@ -158,5 +168,12 @@ public class ControllerPointer : MonoBehaviour
         enabled = false;
         Destroy(pointer);
         Destroy(cursor);
+    }
+
+    public IEnumerator WaitTeleportReloaded()
+    {
+        tpAvailable = false;
+        yield return new WaitForSeconds(5.0f);
+        tpAvailable = true;
     }
 }

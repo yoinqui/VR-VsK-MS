@@ -27,7 +27,6 @@ public class VRCameraManager : MonoBehaviour
     {
         if (other.GetComponent<wallCollider>())
         {
-            Debug.LogError("Entered Wall");
             wallGO = other.gameObject;
             StartCoroutine(FadeImage(false));
         }
@@ -37,8 +36,6 @@ public class VRCameraManager : MonoBehaviour
     {
         if (other.GetComponent<wallCollider>())
         {
-
-            Debug.LogError("Exit Wall");
             wallGO = null;
             StartCoroutine(FadeImage(true));
 
@@ -50,7 +47,6 @@ public class VRCameraManager : MonoBehaviour
         // fade from opaque to transparent
         if (fadeAway)
         {
-            Debug.LogError("Fade away");
             // loop over 1 second backwards
             for (float i = 1; i >= 0; i -= Time.deltaTime)
             {
@@ -67,7 +63,6 @@ public class VRCameraManager : MonoBehaviour
         // fade from transparent to opaque
         else
         {
-            Debug.LogError("Fade In");
             // loop over 1 second
             for (float i = 0; i <= time; i += Time.deltaTime)
             {
