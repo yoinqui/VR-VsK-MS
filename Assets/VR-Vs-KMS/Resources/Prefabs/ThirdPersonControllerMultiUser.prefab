@@ -1459,7 +1459,6 @@ MonoBehaviour:
   BulletPrefab: {fileID: 80148208200246545, guid: 92a6fdf7a933d4c4aa6580e44086fbac,
     type: 3}
   Speed: 5
-  origin: {x: 0, y: 0, z: 0}
 --- !u!114 &9023891763733159937
 MonoBehaviour:
   m_ObjectHideFlags: 0
