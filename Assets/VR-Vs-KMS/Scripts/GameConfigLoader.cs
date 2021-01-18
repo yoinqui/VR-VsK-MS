@@ -11,6 +11,8 @@ public class GameConfigLoader : MonoBehaviour
         Debug.LogError("InitScene Load !");
         GameConfig.Inst.UpdateValuesFromJSON(AppConfigFilePath);
 
+        JSONLevelLoader.Inst.UpdateValuesFromJSON(AppConfigFilePath);
+
         ///////////////////////////// LOAD OTHER SCENE /////////////////////////////
 
         // Load SceneToLoadAfterAppConfigLoaded
