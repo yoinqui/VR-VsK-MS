@@ -571,6 +571,9 @@ GameObject:
   - component: {fileID: 6046819001264566020}
   - component: {fileID: 6334682437351407014}
   - component: {fileID: 7898757986273133429}
+  - component: {fileID: 5939384977893823691}
+  - component: {fileID: 7900576944739529819}
+  - component: {fileID: 817343456461618705}
   m_Layer: 0
   m_Name: Controller (right)
   m_TagString: Untagged
@@ -647,7 +650,9 @@ MonoBehaviour:
   teleport:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
-  pointer: {fileID: 7898757986273133429}
+  teleporter: {fileID: 7898757986273133429}
+  shooter: {fileID: 817343456461618705}
+  pointer: {fileID: 5939384977893823691}
 --- !u!114 &7898757986273133429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -729,6 +734,59 @@ MonoBehaviour:
     m_RotationOrder: 4
   TargetPosition: {x: 0, y: 0, z: 0}
   CanTeleport: 0
+--- !u!114 &5939384977893823691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944645678598804336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0db7d8de9e5f2479871ee76bf13501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.78431374, g: 0, b: 0, a: 0}
+  thickness: 0.002
+  length: 100
+  cursorScale: {x: 0.05, y: 0.05, z: 0.05}
+--- !u!114 &7900576944739529819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944645678598804336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &817343456461618705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944645678598804336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d31fb66a6ec2b94185aff6f80e52573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 80148208200246545, guid: 92a6fdf7a933d4c4aa6580e44086fbac,
+    type: 3}
+  Speed: 10
 --- !u!1 &5944645678598835300
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +848,9 @@ GameObject:
   - component: {fileID: 6046819002024718476}
   - component: {fileID: 6334682437351634820}
   - component: {fileID: 4303146662756740900}
+  - component: {fileID: 182236837678233291}
+  - component: {fileID: 4480201592232780544}
+  - component: {fileID: 867915873656207338}
   m_Layer: 0
   m_Name: Controller (left)
   m_TagString: Untagged
@@ -866,7 +927,9 @@ MonoBehaviour:
   teleport:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
-  pointer: {fileID: 4303146662756740900}
+  teleporter: {fileID: 4303146662756740900}
+  shooter: {fileID: 4480201592232780544}
+  pointer: {fileID: 182236837678233291}
 --- !u!114 &4303146662756740900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -948,3 +1011,56 @@ MonoBehaviour:
     m_RotationOrder: 4
   TargetPosition: {x: 0, y: 0, z: 0}
   CanTeleport: 0
+--- !u!114 &182236837678233291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944645678598904150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d0db7d8de9e5f2479871ee76bf13501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0.78431374, g: 0, b: 0, a: 0}
+  thickness: 0.002
+  length: 100
+  cursorScale: {x: 0.05, y: 0.05, z: 0.05}
+--- !u!114 &4480201592232780544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944645678598904150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d31fb66a6ec2b94185aff6f80e52573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 80148208200246545, guid: 92a6fdf7a933d4c4aa6580e44086fbac,
+    type: 3}
+  Speed: 10
+--- !u!114 &867915873656207338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5944645678598904150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

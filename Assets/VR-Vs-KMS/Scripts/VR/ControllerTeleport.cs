@@ -18,7 +18,7 @@ public enum ERaycastType
     Curved
 }
 
-public class ControllerPointer : MonoBehaviour
+public class ControllerTeleport : MonoBehaviour
 {
     [Header("Raycast")]
     public ERaycastType raycastType = ERaycastType.Straight;

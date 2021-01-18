@@ -20,6 +20,9 @@ public class UserManager : MonoBehaviourPunCallbacks
     /// </summary>
     GameObject goFreeLookCameraRig = null;
 
+    public Shooting shooter;
+    public GameObject muzzle;
+
 
     void Awake()
     {
@@ -42,7 +45,10 @@ public class UserManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetButtonDown("Fire1") && photonView.IsMine)
+        {
+            shooter.Shoot(muzzle.transform.position);
+        }
     }
 
     /// <summary>

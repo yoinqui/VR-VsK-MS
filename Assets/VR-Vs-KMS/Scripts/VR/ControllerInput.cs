@@ -11,6 +11,8 @@ public class ControllerInput : MonoBehaviour
     private SteamVR_Behaviour_Pose pose = null;
     private SteamVR_Input_Sources inputSources;
     private GameObject selectedObject;
+    public ControllerTeleport teleporter;
+    public Shooting shooter;
     public ControllerPointer pointer;
 
 
@@ -44,9 +46,19 @@ public class ControllerInput : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (grabPinch.GetStateDown(inputSources))
         {
+            shooter.Shoot(transform.position);
+        }
 
+        if (grabPinch.GetStateUp(inputSources))
+        {
+            
+        }
+
+        if (grabGrip.GetStateDown(inputSources))
+        {
             if (selectedObject != null)
             {
                 GrabSelectedObject();
@@ -58,7 +70,7 @@ public class ControllerInput : MonoBehaviour
             }
         }
 
-        if (grabPinch.GetStateUp(inputSources))
+        if (grabGrip.GetStateUp(inputSources))
         {
             if (gameObject.GetComponent<FixedJoint>() != null)
             {
@@ -69,16 +81,6 @@ public class ControllerInput : MonoBehaviour
             {
                 onGrabReleased(this.gameObject);
             }
-        }
-
-        if (grabGrip.GetStateDown(inputSources))
-        {
-            Debug.Log(inputSources + " GrabbingGrip : " + true);
-        }
-
-        if (grabGrip.GetStateUp(inputSources))
-        {
-            Debug.Log(inputSources + " GrabbingGrip : " + false);
         }
 
         if (teleport.GetStateDown(inputSources))
@@ -138,20 +140,23 @@ public class ControllerInput : MonoBehaviour
 
     private void TeleportPressed()
     {
-        pointer.ActivatePointer();
+        pointer.DesactivatePointer();
+        teleporter.ActivatePointer();
+
     }
 
     private void TeleportReleased()
     {
-        if (pointer.CanTeleport)
+        if (teleporter.CanTeleport)
         {
-            StartCoroutine(pointer.WaitTeleportReloaded());
+            StartCoroutine(teleporter.WaitTeleportReloaded());
             GameObject cameraRig = GameObject.Find("[CameraRigMultiUser](Clone)");
             GameObject camera = GameObject.Find("Camera").gameObject;
             Vector3 positionDifference = camera.transform.position - cameraRig.transform.position;
-            cameraRig.transform.position = pointer.TargetPosition - new Vector3(positionDifference.x, 0, positionDifference.z);
+            cameraRig.transform.position = teleporter.TargetPosition - new Vector3(positionDifference.x, 0, positionDifference.z);
         }
-        pointer.DesactivatePointer();
+        teleporter.DesactivatePointer();
+        pointer.ActivatePointer();
     }
 
     
