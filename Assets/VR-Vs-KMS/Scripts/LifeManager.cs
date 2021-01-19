@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class LifeManager : MonoBehaviour
 {
-    public float baseHealthPoints = 100.0f;
+    public float baseHealthPoints = 10.0f;
     private float healthPoints;
+    public GameObject lifeBar;
 
-    public delegate void OnDeath(GameObject player);
+    public delegate void OnDeath(GameObject controller);
 
     /// <summary>
     /// The Death event.
@@ -38,5 +39,12 @@ public class LifeManager : MonoBehaviour
     public void ReduceHealth(float damage)
     {
         healthPoints -= damage;
+        Debug.Log(healthPoints);
+        LifeBarUpdate();
+    }
+
+    public void LifeBarUpdate()
+    {
+        lifeBar.GetComponent<Image>().fillAmount = healthPoints / 10;
     }
 }
