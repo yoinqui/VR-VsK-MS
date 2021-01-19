@@ -6,6 +6,6 @@
   "ColorShotKMS": "#006CFF",
   "NbContaminatedPlayerToVictory": 10,
   "RadiusExplosion": 2,
-  "TimeToAreaContamination": 2,
-  "DeviceUsed":  "HTC"
+  "TimeToAreaContamination": 60,
+  "DeviceUsed":  "htc"
 }

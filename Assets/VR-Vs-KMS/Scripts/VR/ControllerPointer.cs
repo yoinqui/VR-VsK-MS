@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
-using Valve.VR.InteractionSystem;
 
 public class ControllerPointer : MonoBehaviour
 {
-    public Vector3 TargetPosition;
-    public bool CanTeleport;
     public Color color;
     public float thickness = 0.002f;
     public float length = 100f;
@@ -13,7 +10,7 @@ public class ControllerPointer : MonoBehaviour
     GameObject pointer;
     GameObject cursor;
 
-    Vector3 cursorScale = new Vector3(0.05f, 0.05f, 0.05f);
+    public Vector3 cursorScale = new Vector3(0.05f, 0.05f, 0.05f);
     float contactDistance = 0f;
     Transform contactTarget = null;
 
@@ -67,24 +64,8 @@ public class ControllerPointer : MonoBehaviour
     void Update()
     {
         Ray raycast = new Ray(transform.position, transform.forward);
-
         RaycastHit hitObject;
-        //LayerMask mask = LayerMask.GetMask("Wall");
-        bool rayHit = Physics.Raycast(raycast, out hitObject/*, 20.0f, mask*/);
-        if (rayHit)
-        {
-            if (hitObject.collider.gameObject.GetComponent<TeleportPlane>())
-            {
-                CanTeleport = true;
-                TargetPosition = hitObject.point;
-                UpdateColor(Color.green);
-            } else
-            {
-                CanTeleport = false;
-                UpdateColor(Color.red);
-            }
-        }
-
+        bool rayHit = Physics.Raycast(raycast, out hitObject);
         float beamLength = GetBeamLength(rayHit, hitObject);
         SetPointerTransform(beamLength, thickness);
     }
@@ -97,6 +78,8 @@ public class ControllerPointer : MonoBehaviour
 
     public void ActivatePointer()
     {
+        enabled = true;
+
         Material newMaterial = new Material(Shader.Find("Unlit/Color"));
         newMaterial.SetColor("_Color", color);
 
@@ -104,7 +87,7 @@ public class ControllerPointer : MonoBehaviour
         holder.name = "Pointer";
         holder.transform.parent = this.transform;
         holder.transform.localPosition = Vector3.zero;
-        
+
 
         pointer = GameObject.CreatePrimitive(PrimitiveType.Cube);
         pointer.name = "Laser";
@@ -130,6 +113,7 @@ public class ControllerPointer : MonoBehaviour
 
     public void DesactivatePointer()
     {
+        enabled = false;
         Destroy(holder);
         Destroy(pointer);
         Destroy(cursor);

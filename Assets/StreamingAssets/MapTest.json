@@ -1,0 +1,60 @@
+{
+  "SpawnList": [
+    {
+      "coordinates": {
+        "x": -12.228798866271973,
+        "y": -2.989996910095215,
+        "z": 5.577645778656006
+      },
+      "type": "Spawn"
+    },
+    
+    {
+      "coordinates": {
+        "x": 14.75398063659668,
+        "y": 0.01000288873910904,
+        "z": 4.4295783042907719
+      },
+      "type": "Spawn"
+    }
+  ],
+  "ContaminationAreaList": [
+    {
+      "coordinates": {
+        "x": -12.274018287658692,
+        "y": -2.989999294281006,
+        "z": 4.082666397094727
+      },
+      "type": "Contamination"
+    },
+    {
+      "coordinates": {
+        "x": 12.666248321533204,
+        "y": 0.010004248470067978,
+        "z": 5.7275919914245609
+      },
+      "type": "Contamination"
+    }
+  ],
+  "ThrowablesList": [
+    {
+      "coordinates": {
+        "x": -12.484503746032715,
+        "y": -2.989997386932373,
+        "z": 3.051571846008301
+      },
+      "type": "Throwable"
+    },
+    {
+      "coordinates": {
+        "x": 16.87598991394043,
+        "y": 0.010003224015235901,
+        "z": 5.945061683654785
+      },
+      "type": "Throwable"
+    }
+  ],
+  "SpawnCount": 2,
+  "ContaminationAreaCount": 2,
+  "ThrowablesCount": 2
+}

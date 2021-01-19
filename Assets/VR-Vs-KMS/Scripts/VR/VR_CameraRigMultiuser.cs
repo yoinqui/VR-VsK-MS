@@ -123,10 +123,15 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
             modelRight.transform.parent = SteamVRRight.transform;
 
             // Create the model of the Head for the UserOther
-            //var head = Instantiate(UserOtherHeadModel);
+            var head = Instantiate(UserOtherHeadModel);
             // Put it as a child of the SteamVRRight Game Object
-            //head.transform.parent = SteamVRCamera.transform;
+            head.transform.parent = SteamVRCamera.transform;
         }
+    }
+
+    protected void checkCameraCollision()
+    {
+
     }
 
     // Update is called once per frame

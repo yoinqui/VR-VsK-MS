@@ -34,5 +34,7 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
+  - RpcShoot
+  - RpcControllerShoot
   DisableAutoOpenWizard: 1
   ShowSettings: 1

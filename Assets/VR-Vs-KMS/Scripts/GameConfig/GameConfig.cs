@@ -31,6 +31,13 @@ public class GameConfig
         {
             jsonString = Path.Combine(Application.streamingAssetsPath, "GameConfig.json");
         }
-        JsonUtility.FromJsonOverwrite(File.ReadAllText(jsonString), Inst);     
+
+        if (File.Exists(jsonString))
+        {
+            JsonUtility.FromJsonOverwrite(File.ReadAllText(jsonString), Inst);
+        } else
+        {
+            Debug.LogError("JSON File GameConfig not found");
+        }
     }
 }
