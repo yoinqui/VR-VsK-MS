@@ -36,5 +36,7 @@ MonoBehaviour:
   - RespawnSpaceship
   - RpcShoot
   - RpcControllerShoot
+  - SetAll
+  - UpdatePlayerListColor
   DisableAutoOpenWizard: 1
   ShowSettings: 1
