@@ -645,7 +645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &895413179
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1003,7 +1003,6 @@ MonoBehaviour:
   ipInputField: {fileID: 1599775667}
   portInputField: {fileID: 564504332}
   nickNameInputField: {fileID: 1005787443}
-  mapFileInputField: {fileID: 895413179}
   controlPanel: {fileID: 454870686}
   progressLabel: {fileID: 2048302336}
 --- !u!1 &1168997426
