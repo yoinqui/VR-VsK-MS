@@ -32,7 +32,7 @@ public class GameConfig
             jsonString = Path.Combine(Application.streamingAssetsPath, "GameConfig.json");
         }
 
-        if (File.ReadAllText(jsonString) != null)
+        if (File.Exists(jsonString))
         {
             JsonUtility.FromJsonOverwrite(File.ReadAllText(jsonString), Inst);
         } else

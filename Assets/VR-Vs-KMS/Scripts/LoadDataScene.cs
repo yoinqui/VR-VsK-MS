@@ -33,10 +33,13 @@ public class LoadDataScene : MonoBehaviour
         {
             for (int i = 0; i < JSONLevel.Inst.SpawnCount; i += 1)
             {
-                Vector3 position = new Vector3(JSONLevel.Inst.SpawnList[i].coordinates.x,
+                Vector3 position = new Vector3(JSONLevel.Inst.SpawnList[i].coordinates.x - 15,
                     JSONLevel.Inst.SpawnList[i].coordinates.y, JSONLevel.Inst.SpawnList[i].coordinates.z);
-                
-                Instantiate(Resources.Load("Prefabs/SpawnArea"), position, Quaternion.identity, SpawnPointParent);
+
+                Quaternion rotation = Quaternion.identity;
+                rotation *= Quaternion.Euler(90, 0, 0);
+
+                Instantiate(Resources.Load("Prefabs/SpawnArea"), position, rotation, SpawnPointParent);
             }
         }
 
@@ -44,7 +47,7 @@ public class LoadDataScene : MonoBehaviour
         {
             for (int i = 0; i < JSONLevel.Inst.ContaminationAreaCount; i += 1)
             {
-                Vector3 position = new Vector3(JSONLevel.Inst.ContaminationAreaList[i].coordinates.x,
+                Vector3 position = new Vector3(JSONLevel.Inst.ContaminationAreaList[i].coordinates.x - 15,
                     JSONLevel.Inst.ContaminationAreaList[i].coordinates.y,
                     JSONLevel.Inst.ContaminationAreaList[i].coordinates.z);
 
@@ -56,7 +59,7 @@ public class LoadDataScene : MonoBehaviour
         {
             for (int i = 0; i < JSONLevel.Inst.ThrowablesCount; i += 1)
             {
-                Vector3 position = new Vector3(JSONLevel.Inst.ThrowablesList[i].coordinates.x,
+                Vector3 position = new Vector3(JSONLevel.Inst.ThrowablesList[i].coordinates.x - 15,
                     JSONLevel.Inst.ThrowablesList[i].coordinates.y, JSONLevel.Inst.ThrowablesList[i].coordinates.z);
 
                 Instantiate(Resources.Load("Prefabs/Thowable"), position, Quaternion.identity);

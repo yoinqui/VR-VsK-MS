@@ -30,7 +30,7 @@ public class JSONLevel
         {
             string jsonPath = Path.Combine(Application.streamingAssetsPath, jsonMap + ".json");
 
-            if (File.ReadAllText(jsonPath) != null) {
+            if (File.Exists(jsonPath)) {
                 JsonUtility.FromJsonOverwrite(File.ReadAllText(jsonPath), Inst);
             } else
             {
