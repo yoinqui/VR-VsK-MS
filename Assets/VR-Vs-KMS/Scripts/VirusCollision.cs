@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class VirusCollision : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("test");
+            if (collision.gameObject.GetComponent<LifeManager>())
+            {
+                collision.gameObject.GetComponent<LifeManager>().ReduceHealth(1);
+            }
         }
         if (collision.gameObject.tag != "VRPlayer")
         {
