@@ -11,6 +11,7 @@ public class DataGame
     public int NbContaminatedPlayerByVR = 0;
 
     public bool isKMSVictoryTeam;
+    private int ContaminationAreaCount = GameObject.FindGameObjectsWithTag("ContaminationArea").Length;
 
     private static DataGame inst;
 
@@ -52,14 +53,17 @@ public class DataGame
 
     private void CheckEndGame()
     {
+        Debug.LogError(Inst.ContaminationAreaCount);
+
         if (Inst.NbContaminatedPlayerByVR >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbContaminatedPlayerByKMS >= GameConfig.Inst.NbContaminatedPlayerToVictory
-            || Inst.NbAreaContainerKMS >= 5 || Inst.NbAreaContainerVR >= 5)
+            || Inst.NbAreaContainerKMS >= Inst.ContaminationAreaCount 
+            || Inst.NbAreaContainerVR >= Inst.ContaminationAreaCount)
         {
             // DISPLAY ENDGAME PANEL
             Debug.LogError("Fin de Partie");
             Inst.isKMSVictoryTeam = Inst.NbContaminatedPlayerByKMS >= GameConfig.Inst.NbContaminatedPlayerToVictory
-            || Inst.NbAreaContainerKMS >= 5;            
+            || Inst.NbAreaContainerKMS >= Inst.ContaminationAreaCount;
             SceneManager.LoadScene("EndGameScene");
         }
     }
