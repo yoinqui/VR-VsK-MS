@@ -42,7 +42,6 @@ namespace vr_vs_kms
             pSystem = this.GetComponentInChildren<ParticleSystem>();
         }
 
-
         /// <summary>
         /// This manage visibility of particle for the camera to optimize the rendering.
         /// </summary>

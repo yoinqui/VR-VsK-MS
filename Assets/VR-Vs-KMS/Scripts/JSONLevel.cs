@@ -29,11 +29,18 @@ public class JSONLevel
         if (!string.IsNullOrEmpty(jsonMap))
         {
             string jsonPath = Path.Combine(Application.streamingAssetsPath, jsonMap + ".json");
-            JsonUtility.FromJsonOverwrite(File.ReadAllText(jsonPath), Inst);
+
+            if (File.ReadAllText(jsonPath) != null) {
+                JsonUtility.FromJsonOverwrite(File.ReadAllText(jsonPath), Inst);
+            } else
+            {
+                Debug.LogError("JSON File Level not found");
+            }
         }      
     }
 }
 
+[System.Serializable]
 public class Pin
 {
     public Vector3 coordinates;
