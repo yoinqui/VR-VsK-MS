@@ -12,8 +12,17 @@ public class ControllerInput : MonoBehaviour
     private SteamVR_Input_Sources inputSources;
     private GameObject selectedObject;
     public ControllerTeleport teleporter;
-    public Shooting shooter;
     public ControllerPointer pointer;
+    public Shooting shooter;
+
+
+    public delegate void OnGrabPinch(GameObject controller);
+
+    public static event OnGrabPinch onGrabPinch;
+
+    public delegate void OnGrabPinchReleased(GameObject controller);
+
+    public static event OnGrabPinchReleased onGrabPinchReleased;
 
 
     public delegate void OnGrabPressed(GameObject controller);
@@ -49,12 +58,13 @@ public class ControllerInput : MonoBehaviour
 
         if (grabPinch.GetStateDown(inputSources))
         {
-            shooter.Shoot(transform.position);
+            onGrabPinch?.Invoke(gameObject);
+            shooter.Shoot(gameObject);
         }
 
         if (grabPinch.GetStateUp(inputSources))
         {
-            
+            onGrabPinchReleased?.Invoke(gameObject);
         }
 
         if (grabGrip.GetStateDown(inputSources))
@@ -64,10 +74,7 @@ public class ControllerInput : MonoBehaviour
                 GrabSelectedObject();
             }
 
-            if (onGrabPressed != null)
-            {
-                onGrabPressed(this.gameObject);
-            }
+            onGrabPressed?.Invoke(gameObject);
         }
 
         if (grabGrip.GetStateUp(inputSources))
@@ -77,10 +84,7 @@ public class ControllerInput : MonoBehaviour
                 UngrabTouchedObject();
             }
 
-            if (onGrabReleased != null)
-            {
-                onGrabReleased(this.gameObject);
-            }
+            onGrabReleased?.Invoke(gameObject);
         }
 
         if (teleport.GetStateDown(inputSources))

@@ -8,22 +8,20 @@ public class Shooting : MonoBehaviourPunCallbacks
 {
     public Rigidbody BulletPrefab;
     public float Speed;
-    private Vector3 origin;
 
     private void Start()
     {
-        
+        //ControllerInput.onGrabPinch += this.Shoot;
     }
 
-    public void Shoot(Vector3 _origin)
+    public void Shoot(GameObject origin)
     {
-        origin = _origin;
-        photonView.RPC("RpcShoot", RpcTarget.All);
+        photonView.RPC("RpcShoot", RpcTarget.All, origin.transform.position);
     }
 
 
     [PunRPC]
-    void RpcShoot()
+    void RpcShoot(Vector3 origin)
     {
         Rigidbody bulletClone = Instantiate(BulletPrefab, origin + new Vector3(0,0,0), this.transform.rotation);
 
@@ -33,6 +31,6 @@ public class Shooting : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
