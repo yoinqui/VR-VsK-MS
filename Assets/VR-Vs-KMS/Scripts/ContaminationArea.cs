@@ -60,7 +60,6 @@ namespace vr_vs_kms
 
         void OnStateChanged(CullingGroupEvent cullEvent)
         {
-            Debug.Log($"cullEvent {cullEvent.isVisible}");
             if (cullEvent.isVisible)
             {
                 pSystem.Play(true);
@@ -79,9 +78,8 @@ namespace vr_vs_kms
                 if (Timer >= GameConfig.Inst.TimeToAreaContamination)
                 {
                     // CHECK IF IS A VR PLAYER OR A KMS PLAYER
-                    DataGame.Inst.UpdateNbAreaContainer(TeamCatching.GetComponent<IsScientistPlayer>() != null,
-                      TeamCatch != null);
-                    
+                    photonView.RPC("RpcUpdateNbAreaContainer", RpcTarget.All);
+
                     // ANIMATION IN FUNCTION OF TEAM PLAYER
                     if (TeamCatching.GetComponent<IsScientistPlayer>() != null) 
                     {
@@ -121,6 +119,13 @@ namespace vr_vs_kms
         void BelongsToScientists()
         {
             ColorParticle(pSystem, scientist.mainColor, scientist.secondColor);
+        }
+
+        [PunRPC]
+        void RpcUpdateNbAreaContainer()
+        {
+            DataGame.Inst.UpdateNbAreaContainer(TeamCatching.GetComponent<IsScientistPlayer>() != null,
+                      TeamCatch != null);
         }
 
         void OnDestroy()
