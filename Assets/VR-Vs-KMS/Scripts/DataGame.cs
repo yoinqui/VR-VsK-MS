@@ -44,11 +44,9 @@ public class DataGame
     // Update of the number of infected players
     public void UpdateNbContaminatedPlayer(GameObject player)
     {
-        Debug.LogError("Kill d'un joueur");
-
         // IF IS A SCIENTIST OR VIRUS PLAYER -- SET VALUES
-        if (player.GetComponent<IsScientistPlayer>() != null) { Inst.NbContaminatedPlayerByVR += 1; }
-        else { Inst.NbContaminatedPlayerByKMS += 1; }
+        if (player.GetComponent<IsScientistPlayer>() != null) { Inst.NbContaminatedPlayerByKMS += 1; }
+        else if (player.tag == "VRPlayer") { Inst.NbContaminatedPlayerByVR += 1; }
         Inst.CheckEndGame();
     }
 
