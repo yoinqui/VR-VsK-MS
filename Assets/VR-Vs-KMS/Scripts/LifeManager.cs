@@ -8,7 +8,7 @@ public class LifeManager : MonoBehaviour
     private float healthPoints;
     public GameObject lifeBar;
 
-    public AudioSource[] audioSources;
+    public AudioSource hitSound;
 
     public delegate void OnDeath(GameObject player);
 
@@ -23,7 +23,7 @@ public class LifeManager : MonoBehaviour
     void Start()
     {
         healthPoints = baseHealthPoints;
-        audioSources = GetComponents<AudioSource>();
+        //audioSources = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class LifeManager : MonoBehaviour
 
     public void ReduceHealth(float damage)
     {
-        AudioSource hitSound = audioSources[1];
+        //AudioSource hitSound = audioSources[1];
         hitSound.Play();
         healthPoints -= damage;
         Debug.Log(healthPoints);

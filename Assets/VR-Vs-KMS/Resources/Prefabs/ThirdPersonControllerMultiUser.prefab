@@ -1612,6 +1612,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 80148208200246545, guid: 92a6fdf7a933d4c4aa6580e44086fbac,
     type: 3}
   Speed: 5
+  shootSound: {fileID: -1530775693927894685}
 --- !u!114 &9023891763733159937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1662,7 +1663,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealthPoints: 10
   lifeBar: {fileID: 1345170109267612335}
-  audioSources: []
+  hitSound: {fileID: 2588497126413156584}
 --- !u!82 &-1278074024483234138
 AudioSource:
   m_ObjectHideFlags: 0

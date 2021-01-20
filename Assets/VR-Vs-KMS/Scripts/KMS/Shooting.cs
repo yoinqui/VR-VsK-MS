@@ -9,17 +9,19 @@ public class Shooting : MonoBehaviourPunCallbacks
     public Rigidbody BulletPrefab;
     public float Speed;
 
-    private AudioSource[] audioSources;
+    public AudioSource shootSound;
+
+    //private AudioSource[] audioSources;
 
     private void Start()
     {
         //ControllerInput.onGrabPinch += this.Shoot;
-        audioSources = GetComponents<AudioSource>();
+        //audioSources = GetComponents<AudioSource>();
     }
 
     public void Shoot(GameObject origin)
     {
-        AudioSource shootSound = audioSources[2];
+        //AudioSource shootSound = audioSources[2];
         shootSound.Play();
         photonView.RPC("RpcShoot", RpcTarget.All, origin.transform.position);
     }
