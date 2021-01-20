@@ -1535,7 +1535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_MovingTurnSpeed: 360
   m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
+  m_JumpPower: 12
   m_GravityMultiplier: 2
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 1
@@ -1610,6 +1610,7 @@ MonoBehaviour:
   BulletPrefab: {fileID: 80148208200246545, guid: 92a6fdf7a933d4c4aa6580e44086fbac,
     type: 3}
   Speed: 5
+  lifeTime: 5
 --- !u!114 &9023891763733159937
 MonoBehaviour:
   m_ObjectHideFlags: 0

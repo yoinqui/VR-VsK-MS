@@ -16,9 +16,23 @@ public class BulletCollision : MonoBehaviour
             }
             
         }
+
         if (collision.gameObject.tag != "Player")
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "VRPlayer")
+        {
+            Debug.Log("test");
+            if (other.gameObject.GetComponent<LifeManager>())
+            {
+                other.gameObject.GetComponent<LifeManager>().ReduceHealth(1);
+            }
+
         }
     }
 }

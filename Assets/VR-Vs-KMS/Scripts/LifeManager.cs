@@ -1,14 +1,15 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class LifeManager : MonoBehaviour
+public class LifeManager : MonoBehaviourPunCallbacks
 {
     public float baseHealthPoints = 10.0f;
     private float healthPoints;
     public GameObject lifeBar;
 
-    public delegate void OnDeath(GameObject player);
+    public delegate void OnDeath(GameObject player, int viewID, int randomNumber);
 
     /// <summary>
     /// The Death event.
@@ -26,25 +27,33 @@ public class LifeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (healthPoints <= 0)
+        if (healthPoints <= 0 && photonView.IsMine)
         {
             if (onDeath != null)
             {
-                onDeath(this.gameObject);
+                int randomNumber = Random.Range(0, 20);
+                onDeath(gameObject, gameObject.GetComponent<PhotonView>().ViewID, randomNumber);
+
                 DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject);
             }
             healthPoints = baseHealthPoints;
+            photonView.RPC("RpcLifeBarUpdate", RpcTarget.AllBuffered, healthPoints);
         }
     }
 
     public void ReduceHealth(float damage)
     {
-        healthPoints -= damage;
-        Debug.Log(healthPoints);
-        LifeBarUpdate();
+        if (photonView.IsMine)
+        {
+            healthPoints -= damage;
+            Debug.Log(healthPoints);
+            photonView.RPC("RpcLifeBarUpdate", RpcTarget.AllBuffered, healthPoints);
+        }
+
     }
 
-    public void LifeBarUpdate()
+    [PunRPC]
+    public void RpcLifeBarUpdate(float healthPoints)
     {
         lifeBar.GetComponent<Image>().fillAmount = healthPoints / 10;
     }

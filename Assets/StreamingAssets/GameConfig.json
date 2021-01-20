@@ -1,7 +1,7 @@
 {
   "LifeNumber": 10,
   "DelayShoot": 500,
-  "DelayTeleport": 5000,
+  "DelayTeleport": 2,
   "ColorShotVirus": "#00FF36",
   "ColorShotKMS": "#006CFF",
   "NbContaminatedPlayerToVictory": 10,

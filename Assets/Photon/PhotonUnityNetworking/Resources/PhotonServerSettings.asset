@@ -38,5 +38,8 @@ MonoBehaviour:
   - RpcControllerShoot
   - SetAll
   - UpdatePlayerListColor
+  - SpawnAfterDeath
+  - RpcSpawnAfterDeath
+  - RpcLifeBarUpdate
   DisableAutoOpenWizard: 1
   ShowSettings: 1
