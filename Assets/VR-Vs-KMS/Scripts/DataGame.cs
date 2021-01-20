@@ -11,7 +11,7 @@ public class DataGame
     public int NbContaminatedPlayerByVR = 0;
 
     public bool isKMSVictoryTeam;
-    private int ContaminationAreaCount = GameObject.FindGameObjectsWithTag("ContaminationArea").Length;
+    private readonly int ContaminationAreaCount = GameObject.FindGameObjectsWithTag("ContaminationArea").Length;
 
     private static DataGame inst;
 
@@ -43,10 +43,10 @@ public class DataGame
     }
 
     // Update of the number of infected players
-    public void UpdateNbContaminatedPlayer(bool isKMS)
+    public void UpdateNbContaminatedPlayer(GameObject player)
     {
         // IF IS A SCIENTIST OR VIRUS PLAYER -- SET VALUES
-        if (isKMS) { Inst.NbContaminatedPlayerByVR += 1; }
+        if (player.GetComponent<IsScientistPlayer>() != null) { Inst.NbContaminatedPlayerByVR += 1; }
         else { Inst.NbContaminatedPlayerByKMS += 1; }
         Inst.CheckEndGame();
     }

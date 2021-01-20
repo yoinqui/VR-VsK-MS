@@ -32,6 +32,7 @@ public class LifeManager : MonoBehaviour
             if (onDeath != null)
             {
                 onDeath(this.gameObject);
+                DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject);
             }
         }
     }

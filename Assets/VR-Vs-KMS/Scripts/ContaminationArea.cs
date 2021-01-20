@@ -87,8 +87,11 @@ namespace vr_vs_kms
                     
                     // ANIMATION IN FUNCTION OF TEAM PLAYER
                     if (TeamCatching.GetComponent<IsScientistPlayer>() != null) {
+                        Debug.LogError("Scientifique catch");
                         BelongsToScientists();
-                    } else {
+                    } else if (TeamCatching.tag == "VRPlayer")
+                    {
+                        Debug.LogError("Virus catch");
                         BelongsToVirus();
                     }
 
