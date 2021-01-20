@@ -69,6 +69,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         Debug.LogFormat("OnPlayerLeftRoom() {0}", other.NickName); // seen when other disconnects
                                                                    // TODO: 
+        Destroy(GameObject.Find(other.NickName).GetComponent<Text>());
     }
     #endregion
 

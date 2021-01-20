@@ -49,7 +49,7 @@ public class ControllerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        pointer.ActivatePointer();
     }
 
     // Update is called once per frame

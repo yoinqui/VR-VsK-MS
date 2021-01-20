@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
-public class Spawner : MonoBehaviour
+public class Spawner : MonoBehaviourPunCallbacks
 {
     // Start is called before the first frame update
     void Start()
@@ -14,17 +15,35 @@ public class Spawner : MonoBehaviour
         
     }
 
-    private void SpawnAfterDeath(GameObject player)
+    private void SpawnAfterDeath(GameObject player, int viewID, int randomNumber)
     {
         GameObject[] spawns = GameObject.FindGameObjectsWithTag("SpawnPoint");
+        photonView.RPC("RpcSpawnAfterDeath", RpcTarget.AllBuffered, viewID, randomNumber);
+    }
 
-        int randomNumber = Random.Range(0, spawns.Length);
+    [PunRPC]
+    private void RpcSpawnAfterDeath(int viewID, int randomNumber)
+    {
+        GameObject player = PhotonView.Find(viewID).gameObject;
+        GameObject[] spawns = GameObject.FindGameObjectsWithTag("SpawnPoint");
 
-        if (GameObject.ReferenceEquals(gameObject, spawns[randomNumber]))
+        Debug.Log("SpawnViewID : " + gameObject.GetComponent<PhotonView>().ViewID + "SpawnRandomViewID : " + spawns[randomNumber % spawns.Length].GetComponent<PhotonView>().ViewID);
+
+        if (gameObject.GetComponent<PhotonView>().ViewID == spawns[randomNumber % spawns.Length].GetComponent<PhotonView>().ViewID)
         {
-            player.SetActive(false);
-            player.transform.position = transform.position;
-            player.SetActive(true);
+            if (player.tag == "Player")
+            {
+                player.SetActive(false);
+                player.transform.position = transform.position;
+                player.SetActive(true);
+            }
+            else
+            {
+                GameObject cameraRig = player.transform.parent.gameObject;
+                GameObject camera = player;
+                Vector3 positionDifference = camera.transform.position - cameraRig.transform.position;
+                cameraRig.transform.position = transform.position - new Vector3(positionDifference.x, 0, positionDifference.z);
+            }
         }
     }
 }

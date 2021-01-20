@@ -18,15 +18,20 @@ public class VirusCollision : MonoBehaviour
         if (collision.gameObject.tag != "VRPlayer")
         {
             Destroy(this.gameObject);
+        } else
+        {
+            Debug.Log("Test");
         }
         
 
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.gameObject.tag == "VRPlayer")
+        {
+            Debug.Log("test");
+        }
     }
 
 
