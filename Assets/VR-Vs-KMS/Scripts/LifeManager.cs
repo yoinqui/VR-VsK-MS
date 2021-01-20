@@ -8,7 +8,7 @@ public class LifeManager : MonoBehaviour
     private float healthPoints;
     public GameObject lifeBar;
 
-    public delegate void OnDeath(GameObject controller);
+    public delegate void OnDeath(GameObject player);
 
     /// <summary>
     /// The Death event.
@@ -28,12 +28,12 @@ public class LifeManager : MonoBehaviour
     {
         if (healthPoints <= 0)
         {
-            healthPoints = baseHealthPoints;
             if (onDeath != null)
             {
                 onDeath(this.gameObject);
                 DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject);
             }
+            healthPoints = baseHealthPoints;
         }
     }
 

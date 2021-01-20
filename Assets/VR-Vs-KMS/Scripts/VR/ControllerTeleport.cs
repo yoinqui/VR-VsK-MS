@@ -63,7 +63,7 @@ public class ControllerTeleport : MonoBehaviour
     void Start()
     {
         pointsPrev = new List<Vector3>();
-        
+        tpCooldownTime = GameConfig.Inst.DelayTeleport;
     }
 
     void Update()
