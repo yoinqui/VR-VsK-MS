@@ -52,6 +52,8 @@ public class DataGame
 
     private void CheckEndGame()
     {
+        Debug.Log("NbAreaContainerKMS : " + NbAreaContainerKMS);
+        Debug.Log("NbAreaContainerVR : " + NbAreaContainerVR);
         if (Inst.NbContaminatedPlayerByVR >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbContaminatedPlayerByKMS >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbAreaContainerKMS >= Inst.ContaminationAreaCount 

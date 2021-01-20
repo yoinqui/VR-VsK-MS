@@ -27,8 +27,6 @@ public class Spawner : MonoBehaviourPunCallbacks
         GameObject player = PhotonView.Find(viewID).gameObject;
         GameObject[] spawns = GameObject.FindGameObjectsWithTag("SpawnPoint");
 
-        Debug.Log("SpawnViewID : " + gameObject.GetComponent<PhotonView>().ViewID + "SpawnRandomViewID : " + spawns[randomNumber % spawns.Length].GetComponent<PhotonView>().ViewID);
-
         if (gameObject.GetComponent<PhotonView>().ViewID == spawns[randomNumber % spawns.Length].GetComponent<PhotonView>().ViewID)
         {
             if (player.tag == "Player")
