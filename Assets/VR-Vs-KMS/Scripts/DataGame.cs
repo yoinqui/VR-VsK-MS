@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using vr_vs_kms;
 
 [System.Serializable]
 public class DataGame
@@ -45,6 +44,8 @@ public class DataGame
     // Update of the number of infected players
     public void UpdateNbContaminatedPlayer(GameObject player)
     {
+        Debug.LogError("Kill d'un joueur");
+
         // IF IS A SCIENTIST OR VIRUS PLAYER -- SET VALUES
         if (player.GetComponent<IsScientistPlayer>() != null) { Inst.NbContaminatedPlayerByVR += 1; }
         else { Inst.NbContaminatedPlayerByKMS += 1; }
@@ -53,15 +54,12 @@ public class DataGame
 
     private void CheckEndGame()
     {
-        Debug.LogError(Inst.ContaminationAreaCount);
-
         if (Inst.NbContaminatedPlayerByVR >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbContaminatedPlayerByKMS >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbAreaContainerKMS >= Inst.ContaminationAreaCount 
             || Inst.NbAreaContainerVR >= Inst.ContaminationAreaCount)
         {
             // DISPLAY ENDGAME PANEL
-            Debug.LogError("Fin de Partie");
             Inst.isKMSVictoryTeam = Inst.NbContaminatedPlayerByKMS >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbAreaContainerKMS >= Inst.ContaminationAreaCount;
             SceneManager.LoadScene("EndGameScene");

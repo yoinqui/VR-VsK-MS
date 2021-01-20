@@ -9354,8 +9354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4340a23b13cc6c6489da4212281e5374, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ContaminationAreaParent: {fileID: 0}
-  SpawnPointParent: {fileID: 0}
+  ContaminationAreaParent: {fileID: 1250110004}
+  SpawnPointParent: {fileID: 1709700082}
 --- !u!1001 &1966938391
 PrefabInstance:
   m_ObjectHideFlags: 0

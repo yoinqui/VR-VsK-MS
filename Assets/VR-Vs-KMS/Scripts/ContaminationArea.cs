@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿using UnityEngine;
 
 namespace vr_vs_kms
 {
@@ -87,11 +83,9 @@ namespace vr_vs_kms
                     
                     // ANIMATION IN FUNCTION OF TEAM PLAYER
                     if (TeamCatching.GetComponent<IsScientistPlayer>() != null) {
-                        Debug.LogError("Scientifique catch");
                         BelongsToScientists();
                     } else if (TeamCatching.tag == "VRPlayer")
                     {
-                        Debug.LogError("Virus catch");
                         BelongsToVirus();
                     }
 
@@ -137,21 +131,24 @@ namespace vr_vs_kms
 
         private void OnTriggerEnter(Collider coll)
         {
-            if (TeamCatch == null
-                || !(TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.GetComponent<IsScientistPlayer>() != null)
-                || !(TeamCatch.GetComponent<IsVirusPlayer>() != null && coll.gameObject.GetComponent<IsVirusPlayer>() != null)) {
-                TeamCatching = coll.gameObject;
-                PlayersIn += 1;
+            if (coll.gameObject.tag == "VRPlayer" || coll.gameObject.GetComponent<IsScientistPlayer>() != null) {
+                if (TeamCatch == null
+                    || (TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.tag == "VRPlayer")
+                    || (TeamCatch.tag == "VRPlayer" && coll.gameObject.GetComponent<IsScientistPlayer>() != null)) {
+                    TeamCatching = coll.gameObject;
+                    PlayersIn += 1;
+                }
             }
         }
 
         void OnTriggerExit(Collider coll)
         {
-            if (TeamCatch == null
-                || !(TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.GetComponent<IsScientistPlayer>() != null)
-                || !(TeamCatch.GetComponent<IsVirusPlayer>() != null && coll.gameObject.GetComponent<IsVirusPlayer>() != null))
-            {
-                PlayersIn --;
+            if (coll.gameObject.tag == "VRPlayer" || coll.gameObject.GetComponent<IsScientistPlayer>() != null) {
+                if (TeamCatch == null
+                    || (TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.tag == "VRPlayer")
+                    || (TeamCatch.tag == "VRPlayer" && coll.gameObject.GetComponent<IsScientistPlayer>() != null)) {
+                    PlayersIn--;
+                }
             }
 
             if (PlayersIn == 0) { Timer = 0; }

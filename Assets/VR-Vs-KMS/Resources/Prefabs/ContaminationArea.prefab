@@ -4831,5 +4831,5 @@ MonoBehaviour:
   scientist:
     mainColor: {r: 0.09745628, g: 0.8113208, b: 0, a: 0.92941177}
     secondColor: {r: 0.31102926, g: 1, b: 0.475, a: 0.95686275}
-  cullRadius: 5
+  cullRadius: 7.86
   inTimer: 0

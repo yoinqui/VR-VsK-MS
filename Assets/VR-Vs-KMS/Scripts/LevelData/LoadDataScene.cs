@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using vr_vs_kms;
 
 public class LoadDataScene : MonoBehaviour
 {
