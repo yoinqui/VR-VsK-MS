@@ -45,8 +45,8 @@ public class DataGame
     public void UpdateNbContaminatedPlayer(GameObject player)
     {
         // IF IS A SCIENTIST OR VIRUS PLAYER -- SET VALUES
-        if (player.GetComponent<IsScientistPlayer>() != null) { Inst.NbContaminatedPlayerByKMS += 1; }
-        else if (player.tag == "VRPlayer") { Inst.NbContaminatedPlayerByVR += 1; }
+        if (player.GetComponent<IsScientistPlayer>() != null) { Inst.NbContaminatedPlayerByVR += 1; }
+        else if (player.tag == "VRPlayer") { Inst.NbContaminatedPlayerByKMS += 1; }
         Inst.CheckEndGame();
     }
 
