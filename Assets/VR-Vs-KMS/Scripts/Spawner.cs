@@ -20,10 +20,13 @@ public class Spawner : MonoBehaviour
 
         int randomNumber = Random.Range(0, spawns.Length);
 
+
+
         if (GameObject.ReferenceEquals(gameObject, spawns[randomNumber]))
         {
             player.SetActive(false);
             player.transform.position = transform.position;
+            GetComponent<AudioSource>().Play();
             player.SetActive(true);
         }
     }
