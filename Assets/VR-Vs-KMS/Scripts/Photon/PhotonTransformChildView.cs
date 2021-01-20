@@ -25,21 +25,18 @@ public class PhotonTransformChildView : MonoBehaviourPunCallbacks, IPunObservabl
                 if (SynchronizePosition)
                 {
                     stream.SendNext(transform.localPosition);
-                    Debug.Log("localPositionUpdateSended" + transform.localPosition);
                 }
                 
 
                 if (SynchronizeRotation)
                 {
                     stream.SendNext(transform.localRotation);
-                    Debug.Log("localRotationUpdateSended" + transform.localRotation);
                 }
                 
 
                 if (SynchronizeScale)
                 {
                     stream.SendNext(transform.localScale);
-                    Debug.Log("localScaleUpdateSended" + transform.localScale);
                 }
             }
         }
@@ -50,19 +47,16 @@ public class PhotonTransformChildView : MonoBehaviourPunCallbacks, IPunObservabl
                 if (SynchronizePosition)
                 {
                     localPositionList[i] = (Vector3)stream.ReceiveNext();
-                    Debug.Log("localPositionUpdateReceived" + localPositionList[i]);
                 }
 
                 if (SynchronizeRotation)
                 {
                     localRotationList[i] = (Quaternion)stream.ReceiveNext();
-                    Debug.Log("localRotationUpdateReceived" + localRotationList[i]);
                 }
 
                 if (SynchronizeScale)
                 {
                     localScaleList[i] = (Vector3)stream.ReceiveNext();
-                    Debug.Log("localScaleUpdateReceived" + localScaleList[i]);
                 }
                     
             }

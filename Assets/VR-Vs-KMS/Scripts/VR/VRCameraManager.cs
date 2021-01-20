@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VRCameraManager : MonoBehaviour
+public class VRCameraManager : MonoBehaviourPunCallbacks
 {
     public GameObject blackScreen;
     public int time = 2;
@@ -14,7 +15,10 @@ public class VRCameraManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!photonView.IsMine)
+        {
+            blackScreen.SetActive(false);
+        }
     }
 
     // Update is called once per frame
