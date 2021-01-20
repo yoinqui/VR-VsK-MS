@@ -78,7 +78,8 @@ namespace vr_vs_kms
                 if (Timer >= GameConfig.Inst.TimeToAreaContamination)
                 {
                     // CHECK IF IS A VR PLAYER OR A KMS PLAYER
-                    photonView.RPC("RpcUpdateNbAreaContainer", RpcTarget.All);
+                    DataGame.Inst.UpdateNbAreaContainer(TeamCatching.GetComponent<IsScientistPlayer>() != null,
+                      TeamCatch != null);
 
                     // ANIMATION IN FUNCTION OF TEAM PLAYER
                     if (TeamCatching.GetComponent<IsScientistPlayer>() != null) 
@@ -119,13 +120,6 @@ namespace vr_vs_kms
         void BelongsToScientists()
         {
             ColorParticle(pSystem, scientist.mainColor, scientist.secondColor);
-        }
-
-        [PunRPC]
-        void RpcUpdateNbAreaContainer()
-        {
-            DataGame.Inst.UpdateNbAreaContainer(TeamCatching.GetComponent<IsScientistPlayer>() != null,
-                      TeamCatch != null);
         }
 
         void OnDestroy()

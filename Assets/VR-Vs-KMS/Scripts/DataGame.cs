@@ -47,14 +47,11 @@ public class DataGame
         // IF IS A SCIENTIST OR VIRUS PLAYER -- SET VALUES
         if (player.GetComponent<IsScientistPlayer>() != null) { Inst.NbContaminatedPlayerByVR += 1; }
         else if (player.tag == "VRPlayer") { Inst.NbContaminatedPlayerByKMS += 1; }
-        Debug.LogError("VRPlayer : " + player.tag == "VRPlayer");
         Inst.CheckEndGame();
     }
 
     private void CheckEndGame()
     {
-        Debug.Log("NbAreaContainerKMS : " + NbAreaContainerKMS);
-        Debug.Log("NbAreaContainerVR : " + NbAreaContainerVR);
         if (Inst.NbContaminatedPlayerByVR >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbContaminatedPlayerByKMS >= GameConfig.Inst.NbContaminatedPlayerToVictory
             || Inst.NbAreaContainerKMS >= Inst.ContaminationAreaCount 
