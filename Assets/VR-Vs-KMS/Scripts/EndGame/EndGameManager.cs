@@ -5,12 +5,15 @@ public class EndGameManager : MonoBehaviourPunCallbacks
 {
     public string SceneToLoadAfterAppConfigLoaded;
 
+    public void RoomSceneReturn()
+    {
+        SceneManager.LoadScene("RoomScene");
+    }
+
     public void LobbySceneReturn()
     {
-        // Load SceneToLoadAfterAppConfigLoaded
-        if (!string.IsNullOrEmpty(SceneToLoadAfterAppConfigLoaded))
-        {
-            SceneManager.LoadScene(SceneToLoadAfterAppConfigLoaded);
-        }
+        PhotonNetwork.LeaveRoom();
+        PhotonNetwork.Disconnect();
+        SceneManager.LoadScene("LobbyScene");
     }
 }
