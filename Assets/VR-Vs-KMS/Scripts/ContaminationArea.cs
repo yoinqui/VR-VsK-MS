@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
 namespace vr_vs_kms
 {
-    public class ContaminationArea : MonoBehaviour
+    public class ContaminationArea : MonoBehaviourPunCallbacks
     {
         [System.Serializable]
         public struct BelongToProperties
@@ -36,7 +37,7 @@ namespace vr_vs_kms
             populateParticleSystemCache();
             setupCullingGroup();
 
-            BelongsToNobody();
+            photonView.RPC("BelongsToNobody", RpcTarget.All);
         }
 
         private void populateParticleSystemCache()
@@ -82,11 +83,13 @@ namespace vr_vs_kms
                       TeamCatch != null);
                     
                     // ANIMATION IN FUNCTION OF TEAM PLAYER
-                    if (TeamCatching.GetComponent<IsScientistPlayer>() != null) {
-                        BelongsToScientists();
-                    } else if (TeamCatching.tag == "VRPlayer")
+                    if (TeamCatching.GetComponent<IsScientistPlayer>() != null) 
                     {
-                        BelongsToVirus();
+                        photonView.RPC("BelongsToScientists", RpcTarget.All);
+                    } 
+                    else if (TeamCatching.tag == "VRPlayer")
+                    {
+                        photonView.RPC("BelongsToVirus", RpcTarget.All);
                     }
 
                     TeamCatch = TeamCatching;
@@ -102,17 +105,20 @@ namespace vr_vs_kms
             main.startColor = new ParticleSystem.MinMaxGradient(mainColor, accentColor);
         }
 
-        public void BelongsToNobody()
+        [PunRPC]
+        void BelongsToNobody()
         {
             ColorParticle(pSystem, nobody.mainColor, nobody.secondColor);
         }
 
-        public void BelongsToVirus()
+        [PunRPC]
+        void BelongsToVirus()
         {
             ColorParticle(pSystem, virus.mainColor, virus.secondColor);
         }
 
-        public void BelongsToScientists()
+        [PunRPC]
+        void BelongsToScientists()
         {
             ColorParticle(pSystem, scientist.mainColor, scientist.secondColor);
         }

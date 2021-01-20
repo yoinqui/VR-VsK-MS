@@ -41,5 +41,8 @@ MonoBehaviour:
   - SpawnAfterDeath
   - RpcSpawnAfterDeath
   - RpcLifeBarUpdate
+  - BelongsToNobody
+  - BelongsToScientists
+  - BelongsToVirus
   DisableAutoOpenWizard: 1
   ShowSettings: 1
