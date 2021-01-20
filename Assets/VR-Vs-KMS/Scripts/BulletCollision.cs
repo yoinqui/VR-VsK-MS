@@ -9,7 +9,6 @@ public class BulletCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "VRPlayer")
         {
-            Debug.Log("test");
             if (collision.gameObject.GetComponent<LifeManager>())
             {
                 collision.gameObject.GetComponent<LifeManager>().ReduceHealth(1);
@@ -27,7 +26,6 @@ public class BulletCollision : MonoBehaviour
     {
         if (other.gameObject.tag == "VRPlayer")
         {
-            Debug.Log("test");
             if (other.gameObject.GetComponent<LifeManager>())
             {
                 other.gameObject.GetComponent<LifeManager>().ReduceHealth(1);

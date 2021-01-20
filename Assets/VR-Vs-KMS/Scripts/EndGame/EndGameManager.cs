@@ -12,7 +12,6 @@ public class EndGameManager : MonoBehaviourPunCallbacks
 
     public void LobbySceneReturn()
     {
-        PhotonNetwork.LeaveRoom();
         PhotonNetwork.Disconnect();
         SceneManager.LoadScene("LobbyScene");
     }
