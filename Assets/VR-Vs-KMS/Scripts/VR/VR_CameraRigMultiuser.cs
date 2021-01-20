@@ -106,6 +106,10 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         {
             SteamVRCamera.GetComponent<Camera>().enabled = false;
             SteamVRCamera.GetComponent<AudioListener>().enabled = false;
+        } 
+        else
+        {
+            SteamVRCamera.transform.Find("ParticleEmiter").gameObject.SetActive(false);
         }
 
         if (!photonView.IsMine)
@@ -126,6 +130,7 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
             var head = Instantiate(UserOtherHeadModel);
             // Put it as a child of the SteamVRRight Game Object
             head.transform.parent = SteamVRCamera.transform;
+            head.transform.localScale = new Vector3(2, 2, 2);
         }
     }
 

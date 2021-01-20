@@ -25,8 +25,8 @@ namespace WS3
         private InputField portInputField;
         [SerializeField]
         private InputField nickNameInputField;
-        [SerializeField]
-        private InputField mapFileInputField;
+        //[SerializeField]
+        //private InputField mapFileInputField;
 
         [Tooltip("The Ui Panel to let the user enter name, connect and play")]
         [SerializeField]
@@ -131,7 +131,7 @@ namespace WS3
                 Debug.Log("Connecting...");
 
                 // UDP port 5055 for local server, 5056 for cloud server
-                JSONLevel.Inst.UpdateValuesFromJSON(mapFileInputField.text);
+                
 
                 if (!string.IsNullOrWhiteSpace(ipInputField.text) && !string.IsNullOrWhiteSpace(portInputField.text))
                 {
@@ -202,10 +202,10 @@ namespace WS3
 
         public override void OnJoinedRoom()
         {
-            Debug.Log("We load the scene 'GameScene' ");
+            Debug.Log("We load the scene 'RoomScene' ");
             // TODO the room has been joined, so we can load the Scene for startig the application
             //SceneManager.LoadScene("AppConfigLoaderScene");
-            PhotonNetwork.LoadLevel("GameScene");
+            PhotonNetwork.LoadLevel("RoomScene");
         }
 
         #endregion

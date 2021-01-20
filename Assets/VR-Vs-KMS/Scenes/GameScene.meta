@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 04e88606b7674af478199e781a46c5a0
+<<<<<<< HEAD
+guid: d87d8ef7a8bf2224a8ab862da65f2afc
+=======
+guid: c0c81687b33a5854ba89848ee2cade1a
+>>>>>>> P1-F5-Life-Manager
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

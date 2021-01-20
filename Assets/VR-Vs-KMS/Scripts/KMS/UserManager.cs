@@ -20,9 +20,8 @@ public class UserManager : MonoBehaviourPunCallbacks
     /// </summary>
     GameObject goFreeLookCameraRig = null;
 
-    public Shooting shooter;
     public GameObject muzzle;
-
+    public Shooting shooter;
 
     void Awake()
     {
@@ -47,7 +46,7 @@ public class UserManager : MonoBehaviourPunCallbacks
     {
         if (Input.GetButtonDown("Fire1") && photonView.IsMine)
         {
-            shooter.Shoot(muzzle.transform.position);
+            shooter.Shoot(muzzle);
         }
     }
 
