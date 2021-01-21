@@ -106,11 +106,11 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         {
             SteamVRCamera.GetComponent<Camera>().enabled = false;
             SteamVRCamera.GetComponent<AudioListener>().enabled = false;
-            SteamVRCamera.transform.Find("ParticleEmiter").gameObject.GetComponent<ParticleSystem>().Stop();
+            gameObject.transform.Find("ParticleEmiter").gameObject.GetComponent<ParticleSystem>().Stop();
         } 
         else
         {
-            SteamVRCamera.transform.Find("ParticleEmiter").gameObject.SetActive(false);
+            gameObject.transform.Find("ParticleEmiter").gameObject.SetActive(false);
             SteamVRBody.SetActive(false);
         }
 

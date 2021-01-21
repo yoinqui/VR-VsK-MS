@@ -9,7 +9,6 @@ public class LifeManager : MonoBehaviourPunCallbacks
     private float healthPoints;
     public GameObject lifeBar;
     private GameObject lifeBarScreen;
-    public GameObject lifeBarControllerRight;
     public GameObject lifeBarControllerLeft;
     private Material material;
 
@@ -27,8 +26,11 @@ public class LifeManager : MonoBehaviourPunCallbacks
     void Start()
     {
         healthPoints = baseHealthPoints;
-        material = lifeBarControllerRight.GetComponent<Renderer>().material;
         lifeBarScreen = GameObject.Find("LifeBarScreen");
+        if (lifeBarControllerLeft)
+        {
+            material = lifeBarControllerLeft.GetComponent<Renderer>().material;
+        }
     }
 
     // Update is called once per frame
