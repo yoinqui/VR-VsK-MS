@@ -44,5 +44,6 @@ MonoBehaviour:
   - SetAll
   - UpdatePlayerListColor
   - RpcStartGame
+  - RpcUpdateNbContaminatedPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 1

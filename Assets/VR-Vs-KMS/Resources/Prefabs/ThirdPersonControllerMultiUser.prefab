@@ -1663,7 +1663,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa02757149804194bbf8fa08745946f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealthPoints: 10
   lifeBar: {fileID: 1345170109267612335}
   lifeBarControllerLeft: {fileID: 0}
   hitSound: {fileID: 2588497126413156584}
