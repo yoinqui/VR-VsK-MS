@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.unityprojectvrvskms.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "D:\\2020-2021\\Option_RA_RV\\Phases\\Phase_Projet\\VR-VsK-MS\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "UnityProject-VR-Vs-KMS [Testing]"
+        }
+      }
+    }
+  ]
+}
