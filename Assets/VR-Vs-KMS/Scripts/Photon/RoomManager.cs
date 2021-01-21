@@ -120,7 +120,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
 
 
-        mapInputField.onValueChanged.AddListener(delegate { photonView.RPC("SetAll", RpcTarget.AllBuffered, mapInputField.text, "map"); });
+        mapInputField.onEndEdit.AddListener(delegate { photonView.RPC("SetAll", RpcTarget.AllBuffered, mapInputField.text, "map"); });
 
         SetReady(readyToggle.isOn, PhotonNetwork.LocalPlayer.NickName);
 
@@ -220,6 +220,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
         Debug.Log("We load the scene 'GameScene' ");
         // TODO the room has been joined, so we can load the Scene for startig the application
         //SceneManager.LoadScene("AppConfigLoaderScene");
+        PhotonNetwork.DestroyAll();
         PhotonNetwork.LoadLevel("GameScene");
     }
 
