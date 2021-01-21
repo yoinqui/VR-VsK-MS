@@ -59,6 +59,9 @@ public class LifeManager : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
+            healthPoints -= damage;
+            Debug.LogError("Health : " + healthPoints);
+            photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
             if (gameObject.GetComponent<IsScientistPlayer>() != null)
             {
                 GameObject forground = lifeBarScreen.transform.Find("forground").gameObject;
@@ -68,9 +71,6 @@ public class LifeManager : MonoBehaviourPunCallbacks
             {
                 material.SetFloat("_Cutoff", 1f - healthPoints / 10);
             }
-
-            healthPoints -= damage;
-            photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
         }
 
         hitSound.Play();

@@ -13,6 +13,7 @@ public class VirusCollision : MonoBehaviour
             {
                 collision.gameObject.GetComponent<LifeManager>().ReduceHealth(1);
             }
+            Destroy(this.gameObject);
         }
         if (collision.gameObject.tag != "VRPlayer")
         {
