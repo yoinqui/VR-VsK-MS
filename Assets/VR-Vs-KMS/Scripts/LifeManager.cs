@@ -58,6 +58,9 @@ public class LifeManager : MonoBehaviourPunCallbacks
             {
                 GameObject forground = lifeBarScreen.transform.Find("forground").gameObject;
                 forground.GetComponent<Image>().fillAmount = healthPoints / 10;
+            }
+            else
+            {
                 material.SetFloat("_Cutoff", 1f - healthPoints / 10);
             }
 
@@ -71,7 +74,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RpcLifeBarUpdate(float healthPoints)
     {
-            lifeBar.GetComponent<Image>().fillAmount = healthPoints / 10;
-            material.SetFloat("_Cutoff", 1f - healthPoints / 10);
+        lifeBar.GetComponent<Image>().fillAmount = healthPoints / 10;
+        material.SetFloat("_Cutoff", 1f - healthPoints / 10);
     }
 }
