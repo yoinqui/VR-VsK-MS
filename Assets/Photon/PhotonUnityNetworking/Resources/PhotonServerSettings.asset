@@ -34,8 +34,8 @@ MonoBehaviour:
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
-  - RpcShoot
   - RpcControllerShoot
+  - RpcShoot
   - SetAll
   - UpdatePlayerListColor
   - SpawnAfterDeath

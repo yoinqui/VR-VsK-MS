@@ -49,6 +49,7 @@ public class Spawner : MonoBehaviourPunCallbacks
             }
             player.SetActive(false);
             player.transform.position = transform.position;
+            GetComponent<AudioSource>().Play();
             yield return new WaitForSeconds(2);
             if (blackScreenGO != null)
             {

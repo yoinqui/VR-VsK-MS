@@ -13,6 +13,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
     public Material material;
 
     public delegate void OnDeath(GameObject player, int viewID, int randomNumber);
+    public AudioSource hitSound;
 
     /// <summary>
     /// The Death event.
@@ -26,8 +27,6 @@ public class LifeManager : MonoBehaviourPunCallbacks
     {
         healthPoints = baseHealthPoints;
         material = lifeBarControllerRight.GetComponent<Renderer>().material;
-
-        //audioSources = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,6 +54,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
             photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
         }
 
+        hitSound.Play();
     }
 
     [PunRPC]
