@@ -101,15 +101,15 @@ public class RoomManager : MonoBehaviourPunCallbacks
         JSONLevel.Inst.ThrowablesCount = 0;
         controlPanel.SetActive(true);
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            mapInputField.interactable = true;
+        //if (PhotonNetwork.IsMasterClient)
+        //{
+        //    mapInputField.interactable = true;
 
-            Debug.LogFormat("OnPlayerEnteredRoom() {0}", PhotonNetwork.LocalPlayer.NickName);
-            GameObject playerNameGO = Instantiate(playerNamePrefab, playersListTransform);
-            playerNameGO.name = PhotonNetwork.LocalPlayer.NickName;
-            playerNameGO.GetComponent<Text>().text = PhotonNetwork.LocalPlayer.NickName;
-        } 
+        //    Debug.LogFormat("OnPlayerEnteredRoom() {0}", PhotonNetwork.LocalPlayer.NickName);
+        //    GameObject playerNameGO = Instantiate(playerNamePrefab, playersListTransform);
+        //    playerNameGO.name = PhotonNetwork.LocalPlayer.NickName;
+        //    playerNameGO.GetComponent<Text>().text = PhotonNetwork.LocalPlayer.NickName;
+        //} 
 
         foreach (var player in PhotonNetwork.PlayerList)
         {
