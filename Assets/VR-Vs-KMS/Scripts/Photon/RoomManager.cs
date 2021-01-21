@@ -120,7 +120,7 @@ public class RoomManager : MonoBehaviourPunCallbacks
 
 
 
-        mapInputField.onValueChanged.AddListener(delegate { photonView.RPC("SetAll", RpcTarget.All, mapInputField.text, "map"); });
+        mapInputField.onValueChanged.AddListener(delegate { photonView.RPC("SetAll", RpcTarget.AllBuffered, mapInputField.text, "map"); });
 
         SetReady(readyToggle.isOn, PhotonNetwork.LocalPlayer.NickName);
 
