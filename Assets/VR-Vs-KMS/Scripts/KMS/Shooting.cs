@@ -32,7 +32,17 @@ public class Shooting : MonoBehaviourPunCallbacks
     void RpcShoot(Vector3 origin)
     {
         Rigidbody bulletClone = Instantiate(BulletPrefab, origin + new Vector3(0,0,0), this.transform.rotation);
+        
+        _ = new Color();
+        Color newColorBullet;
 
+        if (gameObject.GetComponent<IsScientistPlayer>() != null) {
+            ColorUtility.TryParseHtmlString(GameConfig.Inst.ColorShotKMS, out newColorBullet);
+        } else {
+            ColorUtility.TryParseHtmlString(GameConfig.Inst.ColorShotVirus, out newColorBullet);
+        }
+
+        bulletClone.GetComponent<MeshRenderer>().material.color = newColorBullet;
         bulletClone.AddRelativeForce(Vector3.forward * 1000 * Time.deltaTime, ForceMode.Impulse);
         StartCoroutine(DestroyAfterTime(bulletClone));
     }
