@@ -10917,6 +10917,11 @@ PrefabInstance:
       propertyPath: m_TargetEye
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5885461577637486391, guid: ae2b1f15000d4174bb6a709769175156,
+        type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 6584695767712923104, guid: ae2b1f15000d4174bb6a709769175156,
         type: 3}
       propertyPath: m_TagString
