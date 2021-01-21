@@ -634,7 +634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4577d46341b5aba47affb3e00dbe9b4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EndGamePanel: {fileID: 372186686}
+  EndGamePanel: {fileID: 1658564661}
   BackgroundImage: {fileID: 1827201168}
   VirusImg: {fileID: 21300000, guid: 2dbaa4eeb10b2e046acc417494413379, type: 3}
   ScientistImg: {fileID: 21300000, guid: 7495298bf8ecd394a8ce28d60496d719, type: 3}
