@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 363366582080867958}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.6, z: 0.8}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children: []
   m_Father: {fileID: 5944645678599066104}
   m_RootOrder: 4
@@ -1028,7 +1028,6 @@ GameObject:
   - component: {fileID: 5944645678599051734}
   - component: {fileID: 6046819001264566020}
   - component: {fileID: 6334682437351407014}
-  - component: {fileID: 7898757986273133429}
   - component: {fileID: 5939384977893823691}
   - component: {fileID: 817343456461618705}
   - component: {fileID: 7900576944739529819}
@@ -1111,91 +1110,10 @@ MonoBehaviour:
   teleport:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
-  teleporter: {fileID: 7898757986273133429}
+  teleporter: {fileID: 0}
   pointer: {fileID: 5939384977893823691}
   shooter: {fileID: 817343456461618705}
   cameraRig: {fileID: 5944645678598782976}
---- !u!114 &7898757986273133429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5944645678598804336}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7f0f6f3ac23ca143ba420c03b8d13ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastType: 1
-  gravitationForce: 10
-  maxDistance: 500
-  tpCooldownTime: 2
-  interpolationType: 3
-  interpolationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 0.50119877
-      value: 1.0041592
-      inSlope: 0.010025901
-      outSlope: 0.010025901
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.100243814
-    - serializedVersion: 3
-      time: 0.9974365
-      value: 0.002357483
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  color: {r: 0, g: 0, b: 0, a: 0}
-  thickness: 0.03
-  smoothness: 20
-  lineMaterial: {fileID: 2100000, guid: a8934a77ad83e0f4a9e9d40b3917880b, type: 2}
-  Scrolling: 0
-  lineWidthCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 1
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 10
-      value: 10
-      inSlope: 1
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  TargetPosition: {x: 0, y: 0, z: 0}
-  CanTeleport: 0
 --- !u!114 &5939384977893823691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1437,8 +1355,6 @@ GameObject:
   - component: {fileID: 6046819002024718476}
   - component: {fileID: 6334682437351634820}
   - component: {fileID: 4303146662756740900}
-  - component: {fileID: 182236837678233291}
-  - component: {fileID: 4480201592232780544}
   - component: {fileID: 867915873656207338}
   - component: {fileID: 1576606765206515911}
   - component: {fileID: 6148410370713196397}
@@ -1521,8 +1437,8 @@ MonoBehaviour:
     actionPath: /actions/default/in/Teleport
     needsReinit: 0
   teleporter: {fileID: 4303146662756740900}
-  pointer: {fileID: 182236837678233291}
-  shooter: {fileID: 4480201592232780544}
+  pointer: {fileID: 0}
+  shooter: {fileID: 0}
   cameraRig: {fileID: 5944645678598782976}
 --- !u!114 &4303146662756740900
 MonoBehaviour:
@@ -1605,39 +1521,6 @@ MonoBehaviour:
     m_RotationOrder: 4
   TargetPosition: {x: 0, y: 0, z: 0}
   CanTeleport: 0
---- !u!114 &182236837678233291
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5944645678598904150}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d0db7d8de9e5f2479871ee76bf13501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  color: {r: 0.78431374, g: 0, b: 0, a: 0}
-  thickness: 0.002
-  length: 100
-  cursorScale: {x: 0.05, y: 0.05, z: 0.05}
---- !u!114 &4480201592232780544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5944645678598904150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d31fb66a6ec2b94185aff6f80e52573, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletPrefab: {fileID: 8007289583991944144, guid: 17fb04a81c86da04f83481f7399115a6,
-    type: 3}
-  Speed: 10
-  lifeTime: 5
-  shootSound: {fileID: 8000107227570298034}
 --- !u!114 &867915873656207338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2006,7 +1889,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7152596502115111887}
   serializedVersion: 6
-  lengthInSec: 3
+  lengthInSec: 5
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -2081,7 +1964,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 2
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -2250,7 +2133,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 1
+      scalar: 0.8
       minScalar: 0.1
       maxCurve:
         serializedVersion: 2

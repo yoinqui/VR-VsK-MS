@@ -50,7 +50,10 @@ public class ControllerInput : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pointer.ActivatePointer();
+        if (pointer != null)
+        {
+            pointer.ActivatePointer();
+        }
     }
 
     // Update is called once per frame
@@ -60,7 +63,11 @@ public class ControllerInput : MonoBehaviour
         if (grabPinch.GetStateDown(inputSources))
         {
             onGrabPinch?.Invoke(gameObject);
-            shooter.Shoot(gameObject);
+            if (shooter != null)
+            {
+                shooter.Shoot(gameObject);
+            }
+
         }
 
         if (grabPinch.GetStateUp(inputSources))
@@ -88,12 +95,12 @@ public class ControllerInput : MonoBehaviour
             onGrabReleased?.Invoke(gameObject);
         }
 
-        if (teleport.GetStateDown(inputSources))
+        if (teleport.GetStateDown(inputSources) && teleporter)
         {
             TeleportPressed();
         }
 
-        if (teleport.GetStateUp(inputSources))
+        if (teleport.GetStateUp(inputSources) && teleporter)
         {
             TeleportReleased();
         }
@@ -145,7 +152,7 @@ public class ControllerInput : MonoBehaviour
 
     private void TeleportPressed()
     {
-        pointer.DesactivatePointer();
+        //pointer.DesactivatePointer();
         teleporter.ActivatePointer();
 
     }
@@ -162,7 +169,7 @@ public class ControllerInput : MonoBehaviour
             cameraRig.transform.position = teleporter.TargetPosition - new Vector3(positionDifference.x, 0, positionDifference.z);
         }
         teleporter.DesactivatePointer();
-        pointer.ActivatePointer();
+        //pointer.ActivatePointer();
     }
 
     

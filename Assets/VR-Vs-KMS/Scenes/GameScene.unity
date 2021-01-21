@@ -8673,6 +8673,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a5e2f40365fe44ada271dd97ea7506f, type: 3}
+--- !u!1 &1822683195
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1822683196}
+  m_Layer: 0
+  m_Name: ThowableContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1822683196
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822683195}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -11.461362, y: -2.722807, z: 1.9648468}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1831305852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 416390, guid: c76d2d3504ddb4847940a815cad04644,
@@ -9556,6 +9586,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ContaminationAreaParent: {fileID: 1250110004}
   SpawnPointParent: {fileID: 1709700082}
+  ThowableParent: {fileID: 1822683196}
+  ContaminationArea: {fileID: 2112096271937188694, guid: 2ec6fba1a40102843b98f3569a9d95fa,
+    type: 3}
+  SpawnArea: {fileID: 4973953772988507156, guid: af2d2bc1600f49246966c5f2adb03b47,
+    type: 3}
+  Thowable: {fileID: 5363319523592270689, guid: 6a28d807184f69c4c86521ac5deaa56a,
+    type: 3}
 --- !u!1001 &1966938391
 PrefabInstance:
   m_ObjectHideFlags: 0
