@@ -47,6 +47,11 @@ public class LifeManager : MonoBehaviourPunCallbacks
             }
             healthPoints = baseHealthPoints;
             photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
+            if (gameObject.GetComponent<IsScientistPlayer>() != null)
+            {
+                GameObject forground = lifeBarScreen.transform.Find("forground").gameObject;
+                forground.GetComponent<Image>().fillAmount = healthPoints / 10;
+            }
         }
     }
 

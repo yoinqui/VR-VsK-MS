@@ -139,6 +139,6 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        SteamVRBody.transform.position = Vector3.MoveTowards(SteamVRBody.transform.position, SteamVRCamera.transform.position + new Vector3(0, (float)-0.45, 0), 1);
+        SteamVRBody.transform.position = Vector3.MoveTowards(SteamVRBody.transform.position, SteamVRCamera.transform.position + new Vector3(0, (float)-1, 0), 1);
     }
 }
