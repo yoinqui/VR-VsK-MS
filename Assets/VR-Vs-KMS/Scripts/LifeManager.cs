@@ -75,6 +75,5 @@ public class LifeManager : MonoBehaviourPunCallbacks
     public void RpcLifeBarUpdate(float healthPoints)
     {
         lifeBar.GetComponent<Image>().fillAmount = healthPoints / 10;
-        material.SetFloat("_Cutoff", 1f - healthPoints / 10);
     }
 }
