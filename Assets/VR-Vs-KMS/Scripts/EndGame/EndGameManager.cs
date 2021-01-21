@@ -7,7 +7,8 @@ public class EndGameManager : MonoBehaviourPunCallbacks
 
     public void RoomSceneReturn()
     {
-        PhotonNetwork.DestroyAll();
+
+        if (PhotonNetwork.IsMasterClient) { PhotonNetwork.DestroyAll(); }
         SceneManager.LoadScene("RoomScene");
     }
 

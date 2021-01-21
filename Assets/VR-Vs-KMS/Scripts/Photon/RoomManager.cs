@@ -220,7 +220,8 @@ public class RoomManager : MonoBehaviourPunCallbacks
         Debug.Log("We load the scene 'GameScene' ");
         // TODO the room has been joined, so we can load the Scene for startig the application
         //SceneManager.LoadScene("AppConfigLoaderScene");
-        PhotonNetwork.DestroyAll();
+        if (PhotonNetwork.IsMasterClient) { PhotonNetwork.DestroyAll(); }
+        
         PhotonNetwork.LoadLevel("GameScene");
     }
 
