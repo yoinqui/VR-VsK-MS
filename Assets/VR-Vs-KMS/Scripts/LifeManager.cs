@@ -42,8 +42,6 @@ public class LifeManager : MonoBehaviourPunCallbacks
             {
                 int randomNumber = Random.Range(0, 20);
                 onDeath(gameObject, gameObject.GetComponent<PhotonView>().ViewID, randomNumber);
-
-                DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject);
             }
             healthPoints = baseHealthPoints;
             photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
@@ -53,6 +51,8 @@ public class LifeManager : MonoBehaviourPunCallbacks
                 forground.GetComponent<Image>().fillAmount = healthPoints / 10;
             }
         }
+
+        if (healthPoints <= 0) { DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject); }
     }
 
     public void ReduceHealth(float damage)
