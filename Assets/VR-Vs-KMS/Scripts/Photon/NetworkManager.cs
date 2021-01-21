@@ -44,7 +44,6 @@ namespace WS3
         {
             Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName); // not seen if you're the player connecting
             // TODO: 
-
         }
 
         /// <summary>

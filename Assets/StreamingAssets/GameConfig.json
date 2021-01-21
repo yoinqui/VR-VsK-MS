@@ -4,7 +4,7 @@
   "DelayTeleport": 2,
   "ColorShotVirus": "#00FF36",
   "ColorShotKMS": "#006CFF",
-  "NbContaminatedPlayerToVictory": 50,
+  "NbContaminatedPlayerToVictory": 2,
   "RadiusExplosion": 2,
   "TimeToAreaContamination": 5,
   "DeviceUsed":  "htc"

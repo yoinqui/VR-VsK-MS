@@ -1,8 +1,12 @@
 ﻿using Photon.Pun;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Spawner : MonoBehaviourPunCallbacks
 {
+    public GameObject blackScreenKMS;
+    public GameObject blackScreenHTC;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,23 +31,77 @@ public class Spawner : MonoBehaviourPunCallbacks
         GameObject player = PhotonView.Find(viewID).gameObject;
         GameObject[] spawns = GameObject.FindGameObjectsWithTag("SpawnPoint");
 
-        Debug.Log("SpawnViewID : " + gameObject.GetComponent<PhotonView>().ViewID + "SpawnRandomViewID : " + spawns[randomNumber % spawns.Length].GetComponent<PhotonView>().ViewID);
-
         if (gameObject.GetComponent<PhotonView>().ViewID == spawns[randomNumber % spawns.Length].GetComponent<PhotonView>().ViewID)
         {
-            if (player.tag == "Player")
-            {
-                player.SetActive(false);
-                player.transform.position = transform.position;
-                player.SetActive(true);
-            }
-            else
-            {
-                GameObject cameraRig = player.transform.parent.gameObject;
-                GameObject camera = player;
-                Vector3 positionDifference = camera.transform.position - cameraRig.transform.position;
-                cameraRig.transform.position = transform.position - new Vector3(positionDifference.x, 0, positionDifference.z);
-            }
+            StartCoroutine(WaitBeforRespawn(player));
         }
     }
+
+    private IEnumerator WaitBeforRespawn(GameObject player)
+    {
+        if (player.tag == "Player")
+        {
+            GameObject blackScreenGO = null;
+
+            if (photonView.IsMine)
+            {
+                blackScreenGO = Instantiate(blackScreenKMS);
+            }
+            player.SetActive(false);
+            player.transform.position = transform.position;
+            yield return new WaitForSeconds(2);
+            if (blackScreenGO != null)
+            {
+                Destroy(blackScreenGO);
+            }
+            
+            player.SetActive(true);
+        }
+        else
+        {
+            GameObject blackScreenGO = null;
+
+            if (photonView.IsMine)
+            {
+                blackScreenGO = Instantiate(blackScreenHTC);
+                blackScreenGO.GetComponent<Canvas>().worldCamera = player.GetComponent<Camera>();
+            }
+            GameObject cameraRig = player.transform.parent.gameObject;
+            GameObject camera = player;
+            Vector3 positionDifference = camera.transform.position - cameraRig.transform.position;
+
+            cameraRig.SetActive(false);
+            cameraRig.transform.position = transform.position - new Vector3(positionDifference.x, 0, positionDifference.z);
+            yield return new WaitForSeconds(2);
+            if (blackScreenGO != null)
+            {
+                Destroy(blackScreenGO);
+            }
+            cameraRig.SetActive(true);
+        }
+    }
+
+    //void FadeImage(bool fadeAway, GameObject blackScreen)
+    //{
+    //    // fade from opaque to transparent
+    //    if (fadeAway)
+    //    {
+    //        // loop over 1 second backwards
+    //        for (float i = 1; i >= 0; i -= Time.deltaTime)
+    //        {
+    //            // set color with i as alpha
+    //            blackScreen.GetComponent<Image>().color = new Color(0, 0, 0, Mathf.Clamp(i, 0.0f, 1f));
+    //        }
+    //    }
+    //    // fade from transparent to opaque
+    //    else
+    //    {
+    //        // loop over 1 second
+    //        for (float i = 0; i <= 1; i += Time.deltaTime)
+    //        {
+    //            // set color with i as alpha
+    //            blackScreen.GetComponent<Image>().color = new Color(0, 0, 0, Mathf.Clamp(i, 0.0f, 1f));
+    //        }
+    //    }
+    //}
 }

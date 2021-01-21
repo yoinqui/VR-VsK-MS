@@ -8,6 +8,9 @@ public class LifeManager : MonoBehaviourPunCallbacks
     public float baseHealthPoints = 10.0f;
     private float healthPoints;
     public GameObject lifeBar;
+    public GameObject lifeBarControllerRight;
+    public GameObject lifeBarControllerLeft;
+    public Material material;
 
     public delegate void OnDeath(GameObject player, int viewID, int randomNumber);
 
@@ -22,6 +25,9 @@ public class LifeManager : MonoBehaviourPunCallbacks
     void Start()
     {
         healthPoints = baseHealthPoints;
+        material = lifeBarControllerRight.GetComponent<Renderer>().material;
+
+        //audioSources = GetComponents<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,12 +37,13 @@ public class LifeManager : MonoBehaviourPunCallbacks
         {
             if (onDeath != null)
             {
-
                 int randomNumber = Random.Range(0, 20);
                 onDeath(gameObject, gameObject.GetComponent<PhotonView>().ViewID, randomNumber);
+
+                DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject);
             }
             healthPoints = baseHealthPoints;
-            photonView.RPC("RpcLifeBarUpdate", RpcTarget.AllBuffered, healthPoints);
+            photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
         }
     }
 
@@ -45,8 +52,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             healthPoints -= damage;
-            Debug.Log(healthPoints);
-            photonView.RPC("RpcLifeBarUpdate", RpcTarget.AllBuffered, healthPoints);
+            photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
         }
 
     }
@@ -55,5 +61,6 @@ public class LifeManager : MonoBehaviourPunCallbacks
     public void RpcLifeBarUpdate(float healthPoints)
     {
         lifeBar.GetComponent<Image>().fillAmount = healthPoints / 10;
+        material.SetFloat("_Cutoff", 1f - healthPoints / 10);
     }
 }

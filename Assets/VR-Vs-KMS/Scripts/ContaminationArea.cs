@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Photon.Pun;
 using UnityEngine;
-
 
 namespace vr_vs_kms
 {
-    public class ContaminationArea : MonoBehaviour
+    public class ContaminationArea : MonoBehaviourPunCallbacks
     {
         [System.Serializable]
         public struct BelongToProperties
@@ -29,12 +27,17 @@ namespace vr_vs_kms
         public float inTimer = 0f;
         private CullingGroup cullGroup;
 
+        private float Timer = 0;
+        private int PlayersIn = 0;
+        private GameObject TeamCatching;
+        private GameObject TeamCatch;
+
         void Start()
         {
             populateParticleSystemCache();
             setupCullingGroup();
 
-            BelongsToNobody();
+            photonView.RPC("BelongsToNobody", RpcTarget.All);
         }
 
         private void populateParticleSystemCache()
@@ -57,7 +60,6 @@ namespace vr_vs_kms
 
         void OnStateChanged(CullingGroupEvent cullEvent)
         {
-            Debug.Log($"cullEvent {cullEvent.isVisible}");
             if (cullEvent.isVisible)
             {
                 pSystem.Play(true);
@@ -68,33 +70,54 @@ namespace vr_vs_kms
             }
         }
 
-        void OnTriggerExit(Collider coll)
-        {
-            
-        }
-
         void Update()
         {
-            
+            if (PlayersIn > 0)
+            {
+                Timer += Time.deltaTime;
+                if (Timer >= GameConfig.Inst.TimeToAreaContamination)
+                {
+                    // CHECK IF IS A VR PLAYER OR A KMS PLAYER
+                    DataGame.Inst.UpdateNbAreaContainer(TeamCatching.GetComponent<IsScientistPlayer>() != null,
+                      TeamCatch != null);
+
+                    // ANIMATION IN FUNCTION OF TEAM PLAYER
+                    if (TeamCatching.GetComponent<IsScientistPlayer>() != null) 
+                    {
+                        photonView.RPC("BelongsToScientists", RpcTarget.All);
+                    } 
+                    else if (TeamCatching.tag == "VRPlayer")
+                    {
+                        photonView.RPC("BelongsToVirus", RpcTarget.All);
+                    }
+
+                    TeamCatch = TeamCatching;
+                    PlayersIn = 0;
+                    Timer = 0;
+                }
+            }
         }
 
         private void ColorParticle(ParticleSystem pSys, Color mainColor, Color accentColor)
         {
-            // TODO: Solution to color particle 
-            
+            var main = pSys.main;
+            main.startColor = new ParticleSystem.MinMaxGradient(mainColor, accentColor);
         }
 
-        public void BelongsToNobody()
+        [PunRPC]
+        void BelongsToNobody()
         {
             ColorParticle(pSystem, nobody.mainColor, nobody.secondColor);
         }
 
-        public void BelongsToVirus()
+        [PunRPC]
+        void BelongsToVirus()
         {
             ColorParticle(pSystem, virus.mainColor, virus.secondColor);
         }
 
-        public void BelongsToScientists()
+        [PunRPC]
+        void BelongsToScientists()
         {
             ColorParticle(pSystem, scientist.mainColor, scientist.secondColor);
         }
@@ -109,6 +132,31 @@ namespace vr_vs_kms
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawWireSphere(transform.position, cullRadius);
+        }
+
+        private void OnTriggerEnter(Collider coll)
+        {
+            if (coll.gameObject.tag == "VRPlayer" || coll.gameObject.GetComponent<IsScientistPlayer>() != null) {
+                if (TeamCatch == null
+                    || (TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.tag == "VRPlayer")
+                    || (TeamCatch.tag == "VRPlayer" && coll.gameObject.GetComponent<IsScientistPlayer>() != null)) {
+                    TeamCatching = coll.gameObject;
+                    PlayersIn += 1;
+                }
+            }
+        }
+
+        void OnTriggerExit(Collider coll)
+        {
+            if (coll.gameObject.tag == "VRPlayer" || coll.gameObject.GetComponent<IsScientistPlayer>() != null) {
+                if (TeamCatch == null
+                    || (TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.tag == "VRPlayer")
+                    || (TeamCatch.tag == "VRPlayer" && coll.gameObject.GetComponent<IsScientistPlayer>() != null)) {
+                    PlayersIn--;
+                }
+            }
+
+            if (PlayersIn == 0) { Timer = 0; }
         }
     }
 }
