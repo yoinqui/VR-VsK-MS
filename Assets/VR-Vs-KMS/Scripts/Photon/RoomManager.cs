@@ -96,7 +96,9 @@ public class RoomManager : MonoBehaviourPunCallbacks
         // try connecting to the PUN server
         //Connect();
         // Now called by the UI.
-
+        JSONLevel.Inst.SpawnCount = 0;
+        JSONLevel.Inst.ContaminationAreaCount = 0;
+        JSONLevel.Inst.ThrowablesCount = 0;
         controlPanel.SetActive(true);
 
         if (PhotonNetwork.IsMasterClient)
