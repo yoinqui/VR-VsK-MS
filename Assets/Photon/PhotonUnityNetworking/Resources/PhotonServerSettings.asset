@@ -43,5 +43,6 @@ MonoBehaviour:
   - RpcSpawnAfterDeath
   - SetAll
   - UpdatePlayerListColor
+  - RpcStartGame
   DisableAutoOpenWizard: 1
   ShowSettings: 1

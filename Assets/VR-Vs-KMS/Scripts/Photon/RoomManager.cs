@@ -208,7 +208,10 @@ public class RoomManager : MonoBehaviourPunCallbacks
         return true;
     }
 
-    
+    public void StartButtonPressed()
+    {
+        photonView.RPC("RpcStartGame", RpcTarget.All);
+    }
 
     public void StartGame()
     {
@@ -219,6 +222,12 @@ public class RoomManager : MonoBehaviourPunCallbacks
         // TODO the room has been joined, so we can load the Scene for startig the application
         //SceneManager.LoadScene("AppConfigLoaderScene");
         PhotonNetwork.LoadLevel("GameScene");
+    }
+
+    [PunRPC]
+    void RpcStartGame()
+    {
+        StartGame();
     }
 
     [PunRPC]
