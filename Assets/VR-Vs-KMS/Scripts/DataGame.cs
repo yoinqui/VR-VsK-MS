@@ -10,7 +10,7 @@ public class DataGame
     public int NbContaminatedPlayerByVR = 0;
 
     public bool isKMSVictoryTeam;
-    private readonly int ContaminationAreaCount = GameObject.FindGameObjectsWithTag("ContaminationArea").Length;
+    private int ContaminationAreaCount = GameObject.FindGameObjectsWithTag("ContaminationArea").Length;
 
     private static DataGame inst;
 
@@ -62,5 +62,14 @@ public class DataGame
             || Inst.NbAreaContainerKMS >= Inst.ContaminationAreaCount;
             SceneManager.LoadScene("EndGameScene");
         }
+    }
+
+    public void ResetData()
+    {
+        Inst.NbAreaContainerKMS = 0;
+        Inst.NbAreaContainerVR = 0;
+        Inst.NbContaminatedPlayerByKMS = 0;
+        Inst.NbContaminatedPlayerByVR = 0;
+        Inst.ContaminationAreaCount = GameObject.FindGameObjectsWithTag("ContaminationArea").Length;
     }
 }

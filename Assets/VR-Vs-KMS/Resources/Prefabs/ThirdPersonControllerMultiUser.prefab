@@ -1613,8 +1613,8 @@ MonoBehaviour:
   BulletPrefab: {fileID: 80148208200246545, guid: 92a6fdf7a933d4c4aa6580e44086fbac,
     type: 3}
   Speed: 5
-  shootSound: {fileID: -1530775693927894685}
   lifeTime: 5
+  shootSound: {fileID: -1530775693927894685}
 --- !u!114 &9023891763733159937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,6 +1665,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealthPoints: 10
   lifeBar: {fileID: 1345170109267612335}
+  lifeBarControllerRight: {fileID: 0}
+  lifeBarControllerLeft: {fileID: 0}
+  material: {fileID: 0}
+  hitSound: {fileID: 0}
 --- !u!114 &116440269828390141
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1677,7 +1681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fff1b62069a582f4cb99c055a2f86455, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSound: {fileID: 2588497126413156584}
 --- !u!82 &-1278074024483234138
 AudioSource:
   m_ObjectHideFlags: 0

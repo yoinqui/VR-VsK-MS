@@ -29,22 +29,19 @@ MonoBehaviour:
   RunInBackground: 1
   StartInOfflineMode: 0
   RpcList:
+  - BelongsToNobody
+  - BelongsToScientists
+  - BelongsToVirus
   - ClickRpc
   - DestroyRpc
   - DestroySpaceship
   - Fire
   - RespawnSpaceship
   - RpcControllerShoot
+  - RpcLifeBarUpdate
   - RpcShoot
+  - RpcSpawnAfterDeath
   - SetAll
   - UpdatePlayerListColor
-  - SpawnAfterDeath
-  - RpcSpawnAfterDeath
-  - RpcLifeBarUpdate
-  - BelongsToNobody
-  - BelongsToScientists
-  - BelongsToVirus
-  - RpcUpdateNbAreaContainer
-  - RpcUpdateNbContaminatedPlayer
   DisableAutoOpenWizard: 1
   ShowSettings: 1

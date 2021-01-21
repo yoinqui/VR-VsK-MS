@@ -16,6 +16,7 @@ public class LoadDataScene : MonoBehaviour
 
             CreateObjectsFromJSONLevel();
         }
+        DataGame.Inst.ResetData();
     }
 
     public void DestroyObject(Object[] list)
