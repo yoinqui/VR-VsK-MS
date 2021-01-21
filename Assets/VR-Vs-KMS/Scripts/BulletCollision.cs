@@ -28,7 +28,6 @@ public class BulletCollision : MonoBehaviour
         {
             if (other.gameObject.GetComponent<LifeManager>())
             {
-                Debug.LogError("LifeManager : " + other.gameObject.GetComponent<LifeManager>().name);
                 other.gameObject.GetComponent<LifeManager>().ReduceHealth(1);
             }
             Destroy(this.gameObject);

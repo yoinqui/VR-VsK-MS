@@ -62,11 +62,11 @@ public class Spawner : MonoBehaviourPunCallbacks
         {
             GameObject blackScreenGO = null;
 
-            if (photonView.IsMine)
-            {
-                blackScreenGO = Instantiate(blackScreenHTC);
-                blackScreenGO.GetComponent<Canvas>().worldCamera = player.GetComponent<Camera>();
-            }
+            //if (photonView.IsMine)
+            //{
+            //    blackScreenGO = Instantiate(blackScreenHTC);
+            //    blackScreenGO.GetComponent<Canvas>().worldCamera = player.GetComponent<Camera>();
+            //}
             GameObject cameraRig = player.transform.parent.gameObject;
             GameObject camera = player;
             Vector3 positionDifference = camera.transform.position - cameraRig.transform.position;
@@ -74,10 +74,10 @@ public class Spawner : MonoBehaviourPunCallbacks
             cameraRig.SetActive(false);
             cameraRig.transform.position = transform.position - new Vector3(positionDifference.x, 0, positionDifference.z);
             yield return new WaitForSeconds(2);
-            if (blackScreenGO != null)
-            {
-                Destroy(blackScreenGO);
-            }
+            //if (blackScreenGO != null)
+            //{
+            //    Destroy(blackScreenGO);
+            //}
             cameraRig.SetActive(true);
         }
     }

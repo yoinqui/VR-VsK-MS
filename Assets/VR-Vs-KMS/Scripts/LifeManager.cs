@@ -50,6 +50,10 @@ public class LifeManager : MonoBehaviourPunCallbacks
                 GameObject forground = lifeBarScreen.transform.Find("forground").gameObject;
                 forground.GetComponent<Image>().fillAmount = healthPoints / 10;
             }
+            else
+            {
+                material.SetFloat("_Cutoff", 1f - healthPoints / 10);
+            }
         }
 
         if (healthPoints <= 0) { DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject); }
@@ -57,8 +61,6 @@ public class LifeManager : MonoBehaviourPunCallbacks
 
     public void ReduceHealth(float damage)
     {
-
-        Debug.LogError("Health : " + healthPoints);
         if (photonView.IsMine)
         {
             healthPoints -= damage;
