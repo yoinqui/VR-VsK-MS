@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.UI;
 public class LifeManager : MonoBehaviourPunCallbacks
 {
-    public float baseHealthPoints = 10.0f;
     private float healthPoints;
     public GameObject lifeBar;
     private GameObject lifeBarScreen;
@@ -25,7 +24,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void Start()
     {
-        healthPoints = baseHealthPoints;
+        healthPoints = GameConfig.Inst.LifeNumber;
         lifeBarScreen = GameObject.Find("LifeBarScreen");
         if (lifeBarControllerLeft)
         {
@@ -44,7 +43,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
                 int randomNumber = Random.Range(0, 20);
                 onDeath(gameObject, gameObject.GetComponent<PhotonView>().ViewID, randomNumber);
             }
-            healthPoints = baseHealthPoints;
+            healthPoints = GameConfig.Inst.LifeNumber;
             photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
             if (gameObject.GetComponent<IsScientistPlayer>() != null)
             {
