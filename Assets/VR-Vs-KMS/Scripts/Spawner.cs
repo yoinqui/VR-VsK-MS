@@ -13,6 +13,11 @@ public class Spawner : MonoBehaviourPunCallbacks
         LifeManager.onDeath += SpawnAfterDeath;
     }
 
+    public override void OnDisable()
+    {
+        LifeManager.onDeath -= SpawnAfterDeath;
+    }
+
     // Update is called once per frame
     void Update()
     {
