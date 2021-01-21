@@ -10,7 +10,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
     public GameObject lifeBar;
     public GameObject lifeBarControllerRight;
     public GameObject lifeBarControllerLeft;
-    public Material material;
+    private Material material;
 
     public delegate void OnDeath(GameObject player, int viewID, int randomNumber);
     public AudioSource hitSound;

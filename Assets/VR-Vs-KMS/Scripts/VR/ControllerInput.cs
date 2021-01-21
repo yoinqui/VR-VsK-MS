@@ -14,6 +14,7 @@ public class ControllerInput : MonoBehaviour
     public ControllerTeleport teleporter;
     public ControllerPointer pointer;
     public Shooting shooter;
+    public GameObject cameraRig;
 
 
     public delegate void OnGrabPinch(GameObject controller);
@@ -154,8 +155,9 @@ public class ControllerInput : MonoBehaviour
         if (teleporter.CanTeleport)
         {
             StartCoroutine(teleporter.WaitTeleportReloaded());
-            GameObject cameraRig = GameObject.Find("[CameraRigMultiUser](Clone)");
-            GameObject camera = GameObject.Find("Camera").gameObject;
+            GameObject camera = cameraRig.transform.Find("Camera").gameObject;
+            GameObject particlesGO = cameraRig.transform.Find("ParticleEmiter").gameObject;
+            particlesGO.GetComponent<ParticleSystem>().Play();
             Vector3 positionDifference = camera.transform.position - cameraRig.transform.position;
             cameraRig.transform.position = teleporter.TargetPosition - new Vector3(positionDifference.x, 0, positionDifference.z);
         }

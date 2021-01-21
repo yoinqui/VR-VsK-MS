@@ -8,7 +8,7 @@ using Valve.VR;
 public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
 {
     // reference to SteamController
-    public GameObject SteamVRLeft, SteamVRRight, SteamVRCamera;
+    public GameObject SteamVRLeft, SteamVRRight, SteamVRCamera, SteamVRBody;
     public GameObject UserOtherLeftHandModel, UserOtherRightHandModel, UserOtherHeadModel;
     private GameObject goFreeLookCameraRig;
 
@@ -106,10 +106,12 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         {
             SteamVRCamera.GetComponent<Camera>().enabled = false;
             SteamVRCamera.GetComponent<AudioListener>().enabled = false;
+            SteamVRCamera.transform.Find("ParticleEmiter").gameObject.GetComponent<ParticleSystem>().Stop();
         } 
         else
         {
             SteamVRCamera.transform.Find("ParticleEmiter").gameObject.SetActive(false);
+            SteamVRBody.SetActive(false);
         }
 
         if (!photonView.IsMine)
@@ -134,14 +136,9 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         }
     }
 
-    protected void checkCameraCollision()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
-
+        SteamVRBody.transform.position = Vector3.MoveTowards(SteamVRBody.transform.position, SteamVRCamera.transform.position + new Vector3(0, (float)-0.45, 0), 1);
     }
 }
