@@ -217,7 +217,6 @@ public class RoomManager : MonoBehaviourPunCallbacks
     {
         JSONLevel.Inst.UpdateValuesFromJSON(mapInputField.text);
         GameConfig.Inst.DeviceUsed = deviceDropdown.value == 1 ? "htc" : "pc";
-        Debug.LogError(GameConfig.Inst.DeviceUsed);
         Debug.Log("We load the scene 'GameScene' ");
         // TODO the room has been joined, so we can load the Scene for startig the application
         //SceneManager.LoadScene("AppConfigLoaderScene");
