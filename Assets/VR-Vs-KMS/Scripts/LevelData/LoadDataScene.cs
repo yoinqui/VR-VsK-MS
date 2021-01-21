@@ -1,9 +1,15 @@
-﻿using UnityEngine;
+﻿using Photon.Pun;
+using UnityEngine;
 
-public class LoadDataScene : MonoBehaviour
+public class LoadDataScene : MonoBehaviourPunCallbacks
 {
     public Transform ContaminationAreaParent;
     public Transform SpawnPointParent;
+    public Transform ThowableParent;
+    public GameObject ContaminationArea;
+    public GameObject SpawnArea;
+    public GameObject Thowable;
+
 
     public void Awake()
     {
@@ -39,7 +45,8 @@ public class LoadDataScene : MonoBehaviour
                 Quaternion rotation = Quaternion.identity;
                 rotation *= Quaternion.Euler(90, 0, 0);
 
-                Instantiate(Resources.Load("Prefabs/SpawnArea"), position, rotation, SpawnPointParent);
+                GameObject prefab = PhotonNetwork.Instantiate("Prefabs/" + SpawnArea.name, position, rotation);
+                prefab.transform.parent = SpawnPointParent;
             }
         }
 
@@ -51,7 +58,8 @@ public class LoadDataScene : MonoBehaviour
                     JSONLevel.Inst.ContaminationAreaList[i].coordinates.y,
                     JSONLevel.Inst.ContaminationAreaList[i].coordinates.z);
 
-                Instantiate(Resources.Load("Prefabs/ContaminationArea"), position, Quaternion.identity, ContaminationAreaParent);
+                GameObject prefab = PhotonNetwork.Instantiate("Prefabs/" + ContaminationArea.name, position, Quaternion.identity);
+                prefab.transform.parent = ContaminationAreaParent;
             }
         }
 
@@ -62,7 +70,7 @@ public class LoadDataScene : MonoBehaviour
                 Vector3 position = new Vector3(JSONLevel.Inst.ThrowablesList[i].coordinates.x - 15,
                     JSONLevel.Inst.ThrowablesList[i].coordinates.y, JSONLevel.Inst.ThrowablesList[i].coordinates.z);
 
-                Instantiate(Resources.Load("Prefabs/Thowable"), position, Quaternion.identity);
+                GameObject prefab = PhotonNetwork.Instantiate("Prefabs/" + Thowable.name, position, Quaternion.identity);
             }
         }
     }
