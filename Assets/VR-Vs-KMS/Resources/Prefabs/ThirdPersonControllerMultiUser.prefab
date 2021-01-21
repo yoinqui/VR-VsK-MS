@@ -1665,10 +1665,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseHealthPoints: 10
   lifeBar: {fileID: 1345170109267612335}
+  lifeBarScreen: {fileID: 0}
   lifeBarControllerRight: {fileID: 0}
   lifeBarControllerLeft: {fileID: 0}
-  material: {fileID: 0}
-  hitSound: {fileID: 0}
+  hitSound: {fileID: 2588497126413156584}
 --- !u!114 &116440269828390141
 MonoBehaviour:
   m_ObjectHideFlags: 0

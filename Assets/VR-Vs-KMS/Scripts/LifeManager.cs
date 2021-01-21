@@ -8,6 +8,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
     public float baseHealthPoints = 10.0f;
     private float healthPoints;
     public GameObject lifeBar;
+    private GameObject lifeBarScreen;
     public GameObject lifeBarControllerRight;
     public GameObject lifeBarControllerLeft;
     private Material material;
@@ -27,6 +28,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
     {
         healthPoints = baseHealthPoints;
         material = lifeBarControllerRight.GetComponent<Renderer>().material;
+        lifeBarScreen = GameObject.Find("LifeBarScreen");
     }
 
     // Update is called once per frame
@@ -50,6 +52,13 @@ public class LifeManager : MonoBehaviourPunCallbacks
     {
         if (photonView.IsMine)
         {
+            if (gameObject.GetComponent<IsScientistPlayer>() != null)
+            {
+                GameObject forground = lifeBarScreen.transform.Find("forground").gameObject;
+                forground.GetComponent<Image>().fillAmount = healthPoints / 10;
+                material.SetFloat("_Cutoff", 1f - healthPoints / 10);
+            }
+
             healthPoints -= damage;
             photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
         }
@@ -60,7 +69,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void RpcLifeBarUpdate(float healthPoints)
     {
-        lifeBar.GetComponent<Image>().fillAmount = healthPoints / 10;
-        material.SetFloat("_Cutoff", 1f - healthPoints / 10);
+            lifeBar.GetComponent<Image>().fillAmount = healthPoints / 10;
+            material.SetFloat("_Cutoff", 1f - healthPoints / 10);
     }
 }

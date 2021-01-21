@@ -93,6 +93,7 @@ public class UserManager : MonoBehaviourPunCallbacks
         if (photonView.IsMine)
         {
             gameObject.GetComponent<ThirdPersonUserControl>().enabled = true;
+            gameObject.transform.Find("LifeBar").gameObject.SetActive(false);
             try
             {
                 // Change the material of the Ethan Glasses
