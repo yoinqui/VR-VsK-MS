@@ -110,17 +110,13 @@ public class RoomManager : MonoBehaviourPunCallbacks
             playerNameGO.name = PhotonNetwork.LocalPlayer.NickName;
             playerNameGO.GetComponent<Text>().text = PhotonNetwork.LocalPlayer.NickName;
         } 
-        else
+
+        foreach (var player in PhotonNetwork.PlayerList)
         {
-            foreach (var player in PhotonNetwork.PlayerList)
-            {
-                GameObject playerNameGO = Instantiate(playerNamePrefab, playersListTransform);
-                playerNameGO.name = player.NickName;
-                playerNameGO.GetComponent<Text>().text = player.NickName;
-            }
+            GameObject playerNameGO = Instantiate(playerNamePrefab, playersListTransform);
+            playerNameGO.name = player.NickName;
+            playerNameGO.GetComponent<Text>().text = player.NickName;
         }
-
-
 
         mapInputField.onEndEdit.AddListener(delegate { photonView.RPC("SetAll", RpcTarget.AllBuffered, mapInputField.text, "map"); });
 
