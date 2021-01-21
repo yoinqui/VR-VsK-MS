@@ -35,7 +35,6 @@ public class LifeManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        if (healthPoints <= 0) { DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject); }
         if (healthPoints <= 0 && photonView.IsMine)
         {
             if (onDeath != null)
@@ -43,6 +42,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
                 int randomNumber = Random.Range(0, 20);
                 onDeath(gameObject, gameObject.GetComponent<PhotonView>().ViewID, randomNumber);
             }
+            photonView.RPC("RpcUpdateNbContaminatedPlayer", RpcTarget.AllBuffered);
             healthPoints = GameConfig.Inst.LifeNumber;
             photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
             if (gameObject.GetComponent<IsScientistPlayer>() != null)
@@ -83,5 +83,11 @@ public class LifeManager : MonoBehaviourPunCallbacks
     public void RpcLifeBarUpdate(float healthPoints)
     {
         lifeBar.GetComponent<Image>().fillAmount = healthPoints / 10;
+    }
+
+    [PunRPC]
+    public void RpcUpdateNbContaminatedPlayer()
+    {
+        DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject);
     }
 }
