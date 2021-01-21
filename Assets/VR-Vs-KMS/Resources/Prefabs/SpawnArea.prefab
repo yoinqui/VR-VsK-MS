@@ -108,6 +108,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94763ede0b93dac4a8c8ef51f9897232, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackScreenKMS: {fileID: 8645813576534461188, guid: 46dc15b23f6c8344395ad975fff7d393,
+    type: 3}
+  blackScreenHTC: {fileID: 8555914835031513204, guid: e465d0bc1fb837c4aaba31476fbef931,
+    type: 3}
 --- !u!114 &6580814645178558368
 MonoBehaviour:
   m_ObjectHideFlags: 0
