@@ -43,20 +43,20 @@ public class Spawner : MonoBehaviourPunCallbacks
         {
             //GameObject blackScreenGO = null;
 
-            //if (photonView.IsMine)
-            //{
-                //blackScreenGO = Instantiate(blackScreenKMS);
-            //}
-            player.SetActive(false);
-            player.transform.position = transform.position;
-            GetComponent<AudioSource>().Play();
-            yield return new WaitForSeconds(2);
-            //if (blackScreenGO != null)
-            //{
-            //    Destroy(blackScreenGO);
-            //}
+            if (photonView.IsMine)
+            {
+                GameObject panel = player.GetComponent<Canvas>().transform.Find("Panel").gameObject;
+                panel.SetActive(true);
+                player.transform.position = new Vector3( 0, 20, 0);
+
+                yield return new WaitForSeconds(2);
+
+                player.transform.position = transform.position;
+
+                panel.SetActive(false);
+                GetComponent<AudioSource>().Play();
+            }
             
-            player.SetActive(true);
         }
         else
         {

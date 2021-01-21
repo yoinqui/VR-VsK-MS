@@ -3130,6 +3130,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709700082}
     m_Modifications:
+    - target: {fileID: -1629915728412092373, guid: a8ee511281b67a1448c9fb76e29d1577,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -1424449878600403576, guid: a8ee511281b67a1448c9fb76e29d1577,
         type: 3}
       propertyPath: ObservedComponents.Array.size
@@ -5740,6 +5745,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709700082}
     m_Modifications:
+    - target: {fileID: -1629915728412092373, guid: a8ee511281b67a1448c9fb76e29d1577,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -1424449878600403576, guid: a8ee511281b67a1448c9fb76e29d1577,
         type: 3}
       propertyPath: ObservedComponents.Array.size
@@ -9622,6 +9632,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709700082}
     m_Modifications:
+    - target: {fileID: -1629915728412092373, guid: a8ee511281b67a1448c9fb76e29d1577,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -1424449878600403576, guid: a8ee511281b67a1448c9fb76e29d1577,
         type: 3}
       propertyPath: ObservedComponents.Array.size
@@ -10308,6 +10323,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709700082}
     m_Modifications:
+    - target: {fileID: -1629915728412092373, guid: a8ee511281b67a1448c9fb76e29d1577,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -1424449878600403576, guid: a8ee511281b67a1448c9fb76e29d1577,
         type: 3}
       propertyPath: ObservedComponents.Array.size
@@ -10951,6 +10971,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1709700082}
     m_Modifications:
+    - target: {fileID: -1629915728412092373, guid: a8ee511281b67a1448c9fb76e29d1577,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -1424449878600403576, guid: a8ee511281b67a1448c9fb76e29d1577,
         type: 3}
       propertyPath: ObservedComponents.Array.size
