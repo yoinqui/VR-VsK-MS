@@ -111,7 +111,7 @@ public class VR_CameraRigMultiuser : MonoBehaviourPunCallbacks
         else
         {
             gameObject.transform.Find("ParticleEmiter").gameObject.SetActive(false);
-            SteamVRBody.SetActive(false);
+            SteamVRBody.GetComponent<MeshRenderer>().enabled = false;
         }
 
         if (!photonView.IsMine)
