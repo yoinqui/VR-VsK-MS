@@ -57,10 +57,11 @@ public class LifeManager : MonoBehaviourPunCallbacks
 
     public void ReduceHealth(float damage)
     {
+
+        Debug.LogError("Health : " + healthPoints);
         if (photonView.IsMine)
         {
             healthPoints -= damage;
-            Debug.LogError("Health : " + healthPoints);
             photonView.RPC("RpcLifeBarUpdate", RpcTarget.All, healthPoints);
             if (gameObject.GetComponent<IsScientistPlayer>() != null)
             {
