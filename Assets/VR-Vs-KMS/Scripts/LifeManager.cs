@@ -36,6 +36,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
+        if (healthPoints <= 0) { DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject); }
         if (healthPoints <= 0 && photonView.IsMine)
         {
             if (onDeath != null)
@@ -56,7 +57,7 @@ public class LifeManager : MonoBehaviourPunCallbacks
             }
         }
 
-        if (healthPoints <= 0) { DataGame.Inst.UpdateNbContaminatedPlayer(this.gameObject); }
+        
     }
 
     public void ReduceHealth(float damage)
