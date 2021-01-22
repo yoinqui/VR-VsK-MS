@@ -9,7 +9,6 @@ public class Shooting : MonoBehaviourPunCallbacks
     public Rigidbody BulletPrefab;
     public float Speed;
     public int lifeTime = 5;
-    public Camera cam;
 
     public AudioSource shootSound;
 
@@ -19,7 +18,6 @@ public class Shooting : MonoBehaviourPunCallbacks
     {
         //ControllerInput.onGrabPinch += this.Shoot;
         //audioSources = GetComponents<AudioSource>();
-        cam = cam = Camera.main;
     }
 
     public void Shoot(GameObject origin)
@@ -45,7 +43,7 @@ public class Shooting : MonoBehaviourPunCallbacks
         }
 
         bulletClone.GetComponent<MeshRenderer>().material.color = newColorBullet;
-        bulletClone.AddRelativeForce(cam.transform.forward * 1000 * Time.deltaTime, ForceMode.Impulse);
+        bulletClone.AddRelativeForce(Vector3.forward * 1000 * Time.deltaTime, ForceMode.Impulse);
         StartCoroutine(DestroyAfterTime(bulletClone));
     }
 
