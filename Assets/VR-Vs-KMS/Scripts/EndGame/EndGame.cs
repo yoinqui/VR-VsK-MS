@@ -6,7 +6,7 @@ using vr_vs_kms;
 
 public class EndGame : MonoBehaviour
 {
-    public GameObject EndGamePanel;
+    public Text EndGameTextPanel;
     public Image BackgroundImage;
 
     public Sprite VirusImg;
@@ -17,8 +17,8 @@ public class EndGame : MonoBehaviour
     public void Awake()
     {
         title += DataGame.Inst.isKMSVictoryTeam ? "scientifiques !" : "virus !";
-        EndGamePanel.GetComponentInChildren<Text>().color = DataGame.Inst.isKMSVictoryTeam ? Color.green : Color.red;
-        EndGamePanel.GetComponentInChildren<Text>().text = title.ToUpper();
+        EndGameTextPanel.color = DataGame.Inst.isKMSVictoryTeam ? Color.green : Color.red;
+        EndGameTextPanel.text = title.ToUpper();
         BackgroundImage.sprite = DataGame.Inst.isKMSVictoryTeam ? ScientistImg : VirusImg;
     }
 }
