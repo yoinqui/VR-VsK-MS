@@ -41,9 +41,9 @@ MonoBehaviour:
   - RpcLifeBarUpdate
   - RpcShoot
   - RpcSpawnAfterDeath
-  - SetAll
-  - UpdatePlayerListColor
   - RpcStartGame
   - RpcUpdateNbContaminatedPlayer
+  - SetAll
+  - UpdatePlayerListColor
   DisableAutoOpenWizard: 1
   ShowSettings: 1
