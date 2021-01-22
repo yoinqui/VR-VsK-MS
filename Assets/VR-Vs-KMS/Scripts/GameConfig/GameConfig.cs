@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameConfig
 {
     public int LifeNumber;
-    public int DelayShoot;
+    public float DelayShoot;
     public int DelayTeleport;
     public string ColorShotVirus;
     public string ColorShotKMS;

@@ -92,6 +92,7 @@ namespace vr_vs_kms
                     }
 
                     TeamCatch = TeamCatching;
+                    TeamCatching = null; // Gestion Bug Area
                     PlayersIn = 0;
                     Timer = 0;
                 }
@@ -140,6 +141,16 @@ namespace vr_vs_kms
                 if (TeamCatch == null
                     || (TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.tag == "VRPlayer")
                     || (TeamCatch.tag == "VRPlayer" && coll.gameObject.GetComponent<IsScientistPlayer>() != null)) {
+
+                    if (TeamCatch == null && TeamCatching != null && TeamCatching != coll.gameObject) // Gestion Bug Area
+                    {
+                        TeamCatching = null; // Gestion Bug Area
+                        PlayersIn = 0; // Gestion Bug Area
+                        Timer = 0; // Gestion Bug Area
+
+                        return; // Gestion Bug Area
+                    }
+
                     TeamCatching = coll.gameObject;
                     PlayersIn += 1;
                 }
@@ -149,14 +160,15 @@ namespace vr_vs_kms
         void OnTriggerExit(Collider coll)
         {
             if (coll.gameObject.tag == "VRPlayer" || coll.gameObject.GetComponent<IsScientistPlayer>() != null) {
-                if (TeamCatch == null
+                if ((TeamCatch == null
                     || (TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.tag == "VRPlayer")
-                    || (TeamCatch.tag == "VRPlayer" && coll.gameObject.GetComponent<IsScientistPlayer>() != null)) {
+                    || (TeamCatch.tag == "VRPlayer" && coll.gameObject.GetComponent<IsScientistPlayer>() != null))
+                    && PlayersIn > 0) { // Gestion Bug Area (PlayersIn > 0))
                     PlayersIn--;
                 }
             }
 
-            if (PlayersIn == 0) { Timer = 0; }
+            if (PlayersIn == 0 && TeamCatching != null) { Timer = 0; TeamCatching = null; } // Gestion Bug Area (TeamCatching))
         }
     }
 }

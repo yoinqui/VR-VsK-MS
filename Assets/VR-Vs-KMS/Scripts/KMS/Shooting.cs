@@ -12,6 +12,9 @@ public class Shooting : MonoBehaviourPunCallbacks
 
     public AudioSource shootSound;
 
+    private float Timer = 0;
+    private bool IsCanShoot = true;
+
     //private AudioSource[] audioSources;
 
     private void Start()
@@ -20,11 +23,29 @@ public class Shooting : MonoBehaviourPunCallbacks
         //audioSources = GetComponents<AudioSource>();
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (!IsCanShoot)
+        {
+            Timer += Time.deltaTime;
+            if (Timer >= (GameConfig.Inst.DelayShoot / 1000))
+            {
+                IsCanShoot = true;
+                Timer = 0;
+            }
+        }
+    }
+
     public void Shoot(GameObject origin)
     {
-        //AudioSource shootSound = audioSources[2];
-        shootSound.Play();
-        photonView.RPC("RpcShoot", RpcTarget.All, origin.transform.position);
+        if (IsCanShoot)
+        {            
+            //AudioSource shootSound = audioSources[2];
+            shootSound.Play();
+            photonView.RPC("RpcShoot", RpcTarget.All, origin.transform.position);
+            IsCanShoot = false;
+        }
     }
 
 
@@ -45,12 +66,6 @@ public class Shooting : MonoBehaviourPunCallbacks
         bulletClone.GetComponent<MeshRenderer>().material.color = newColorBullet;
         bulletClone.AddRelativeForce(Vector3.forward * 1000 * Time.deltaTime, ForceMode.Impulse);
         StartCoroutine(DestroyAfterTime(bulletClone));
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public IEnumerator DestroyAfterTime(Rigidbody bullet)
