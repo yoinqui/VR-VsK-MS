@@ -2,10 +2,10 @@
   "LifeNumber": 10,
   "DelayShoot": 500,
   "DelayTeleport": 2,
-  "ColorShotVirus": "#00FF36",
-  "ColorShotKMS": "#006CFF",
+  "ColorShotVirus": "#FF0000",
+  "ColorShotKMS": "#00FF0C",
   "NbContaminatedPlayerToVictory": 2,
   "RadiusExplosion": 2,
   "TimeToAreaContamination": 5,
-  "DeviceUsed":  "htc"
+  "DeviceUsed": "htc"
 }
