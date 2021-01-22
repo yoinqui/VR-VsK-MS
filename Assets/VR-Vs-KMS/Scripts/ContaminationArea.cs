@@ -92,7 +92,7 @@ namespace vr_vs_kms
                     }
 
                     TeamCatch = TeamCatching;
-                    TeamCatching = null;
+                    TeamCatching = null; // Gestion Bug Area
                     PlayersIn = 0;
                     Timer = 0;
                 }
@@ -142,13 +142,13 @@ namespace vr_vs_kms
                     || (TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.tag == "VRPlayer")
                     || (TeamCatch.tag == "VRPlayer" && coll.gameObject.GetComponent<IsScientistPlayer>() != null)) {
 
-                    if (TeamCatch == null && TeamCatching != null && TeamCatching != coll.gameObject)
+                    if (TeamCatch == null && TeamCatching != null && TeamCatching != coll.gameObject) // Gestion Bug Area
                     {
-                        TeamCatching = null;
-                        PlayersIn = 0;
-                        Timer = 0;
+                        TeamCatching = null; // Gestion Bug Area
+                        PlayersIn = 0; // Gestion Bug Area
+                        Timer = 0; // Gestion Bug Area
 
-                        return;
+                        return; // Gestion Bug Area
                     }
 
                     TeamCatching = coll.gameObject;
@@ -163,12 +163,12 @@ namespace vr_vs_kms
                 if ((TeamCatch == null
                     || (TeamCatch.GetComponent<IsScientistPlayer>() != null && coll.gameObject.tag == "VRPlayer")
                     || (TeamCatch.tag == "VRPlayer" && coll.gameObject.GetComponent<IsScientistPlayer>() != null))
-                    && PlayersIn > 0) {                    
+                    && PlayersIn > 0) { // Gestion Bug Area (PlayersIn > 0))
                     PlayersIn--;
                 }
             }
 
-            if (PlayersIn == 0 && TeamCatching != null) { Timer = 0; TeamCatching = null; }
+            if (PlayersIn == 0 && TeamCatching != null) { Timer = 0; TeamCatching = null; } // Gestion Bug Area (TeamCatching))
         }
     }
 }
